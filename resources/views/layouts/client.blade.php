@@ -124,7 +124,7 @@
                                                 <i class="pe-7s-search"></i>
                                             </a>
                                         </li>
-                                        <li class="dropdown d-none d-lg-block">
+                                        {{-- <li class="dropdown d-none d-lg-block">
                                             <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button"
                                                 id="settingButton" data-bs-toggle="dropdown" aria-label="setting"
                                                 aria-expanded="false">
@@ -141,15 +141,15 @@
                                                         @csrf
                                                     </form>
                                                 @endauth
-                                                {{-- @guest
+                                                @guest
                                                     <li><a class="dropdown-item"
                                                             href="{{ route('signin') }}">{{ trans('Login') }}</a>
                                                     </li>
                                                     <li><a class="dropdown-item"
                                                             href="{{ route('signup') }}">{{ trans('Register') }}</a></li>
-                                                @endguest --}}
+                                                @endguest
                                             </ul>
-                                        </li>
+                                        </li> --}}
                                         <li class="d-none d-lg-block">
                                             <a href="{{ route('clientWishlist') }}">
                                                 <i class="pe-7s-like"></i>
@@ -255,7 +255,7 @@
                                                 <i class="pe-7s-search"></i>
                                             </a>
                                         </li>
-                                        <li class="dropdown d-none d-lg-block">
+                                        {{-- <li class="dropdown d-none d-lg-block">
                                             <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button"
                                                 id="stickysettingButton" data-bs-toggle="dropdown"
                                                 aria-label="setting" aria-expanded="false">
@@ -266,12 +266,12 @@
                                                     <li><a class="dropdown-item" href="{{ route('myAccount') }}">{{ trans('My Account') }}</a></li>
                                                 @endauth
 
-                                                {{-- @guest
+                                                @guest
                                                     <li><a class="dropdown-item" href="{{ route('signin') }}">{{ trans('Login') }}</a></li>
                                                     <li><a class="dropdown-item" href="{{ route('signup') }}">{{ trans('Register') }}</a></li>
-                                                @endguest --}}
+                                                @endguest
                                             </ul>
-                                        </li>
+                                        </li> --}}
                                         <li class="d-none d-lg-block">
                                             <a href="{{ route('clientWishlist') }}">
                                                 <i class="pe-7s-like"></i>
@@ -338,7 +338,7 @@
                                     </div>
                                 </div>
 
-                                <li class="dropdown">
+                                {{-- <li class="dropdown">
                                     <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button"
                                         id="settingButtonTwo" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="pe-7s-users"></i>
@@ -347,12 +347,12 @@
                                         @auth
                                             <li><a class="dropdown-item" href="{{ route('myAccount') }}">{{ trans('My Account') }}</a></li>
                                         @endauth
-                                        {{-- @guest
+                                        @guest
                                             <li><a class="dropdown-item" href="{{ route('signin') }}">{{ trans('Login') }}</a></li>
                                             <li><a class="dropdown-item" href="{{ route('signup') }}">{{ trans('Register') }}</a></li>
-                                        @endguest --}}
+                                        @endguest
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a href="{{ route('clientWishlist') }}">
                                         <i class="pe-7s-like"></i>

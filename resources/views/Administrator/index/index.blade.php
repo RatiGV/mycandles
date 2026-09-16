@@ -102,7 +102,7 @@
         <div class="clearfix"></div>
     </div>
     <div class="x_content">
-        <div class="col-md-3">
+        {{-- <div class="col-md-3">
             <a href="{{ route('Coupons') }}">
                 <div class="card-counter other">
                     <i class="fas fa-percent"></i>
@@ -110,7 +110,7 @@
                     <span class="count-name">@lang('admin.routes.Coupons')</span>
                 </div>
             </a>
-        </div>
+        </div> --}}
         {{-- <div class="col-md-3">
             <a href="{{ route('Districts') }}">
                 <div class="card-counter warning">
