@@ -40,6 +40,7 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/firago-font.css') }}">
     @stack('css')
 
     <script>
@@ -593,13 +594,15 @@
                                     </div>
                                 </li>
 
-                                <li class="add-to-cart">
-                                    <button type="button"
-                                            class="btn btn-custom-size lg-size btn-pronia-primary add-cart-product-inner"
-                                            data-id="">
-                                        {{ trans('Add to cart') }}
-                                    </button>
-                                </li>
+                                @if (false)
+                                    <li class="add-to-cart">
+                                        <button type="button"
+                                                class="btn btn-custom-size lg-size btn-pronia-primary add-cart-product-inner"
+                                                data-id="">
+                                            {{ trans('Add to cart') }}
+                                        </button>
+                                    </li>
+                                @endif
 
                                 <li class="wishlist-btn-wrap">
                                     <a class="custom-circle-btn" href="{{ route('clientWishlist') }}">
