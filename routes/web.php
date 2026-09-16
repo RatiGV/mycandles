@@ -339,7 +339,7 @@ Route::middleware(['admin', 'check_permission'])->group(function () {
             Route::prefix('informations')->group(function () {
                 Route::controller(InformationController::class)->group(function () {
                     Route::get('/', 'edit')->name('EditInformations');
-                    Route::post('/update/{id}', 'update')->name('UpdateInformations');
+                    Route::post('/update/{id?}', 'update')->name('UpdateInformations');
                 });
             });
 
