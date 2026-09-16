@@ -25,10 +25,12 @@ class CheckPermission
 
         $action = $request->route()->getActionMethod();
 
+        $available_actions = [];
+
         if ($role == 2) {
-            $available_actions = json_decode(DB::table('configurations')->first()->standard_admin_actions);
+            $available_actions = json_decode(DB::table('configurations')->first()->standard_admin_actions) ?? [];
         } elseif ($role == 3) {
-            $available_actions = json_decode(DB::table('configurations')->first()->moderator_admin_actions);
+            $available_actions = json_decode(DB::table('configurations')->first()->moderator_admin_actions) ?? [];
         }
 
         array_push($available_actions, 'index');
