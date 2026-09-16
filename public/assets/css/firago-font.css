@@ -26,7 +26,6 @@
     font-style: normal;
     font-display: swap;
 }
-html[lang="ka"] body,
-html[lang="ka"] * {
-    font-family: 'FiraGO', 'Rubik', sans-serif !important;
+html[lang="ka"] body {
+    font-family: 'FiraGO', 'Rubik', sans-serif;
 }

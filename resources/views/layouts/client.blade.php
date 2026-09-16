@@ -41,6 +41,7 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/firago-font.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/wishlist-toast.css') }}">
     @stack('css')
 
     <script>
@@ -49,6 +50,16 @@
 
     <script>
        window.ADD_TO_CART_URL = "/ajax-add-cart";
+    </script>
+
+    <script>
+        window.WISHLIST_MESSAGES = {
+            added: "{{ trans('Added to wishlist') }}",
+            removed: "{{ trans('Removed from wishlist') }}",
+            alreadyAdded: "{{ trans('Already in wishlist') }}",
+            unavailable: "{{ trans('This product is unavailable') }}",
+            error: "{{ trans('Something went wrong') }}"
+        };
     </script>
 
     @include('partials.tracking')
