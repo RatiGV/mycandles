@@ -9,7 +9,6 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withProviders([
         \Barryvdh\DomPDF\ServiceProvider::class,
         \Maatwebsite\Excel\ExcelServiceProvider::class,
-        \Barryvdh\Debugbar\ServiceProvider::class,
         \Intervention\Image\ImageServiceProvider::class,
     ])
     ->withRouting(
