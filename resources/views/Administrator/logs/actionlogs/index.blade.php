@@ -10,7 +10,7 @@
             <input type="hidden" name="table" value="{{ $main_table }}">
             <input type="hidden" name="check_childs_here" value="{{ $check_childs_here }}">
             <div class="x_title">
-                <h2>@lang('admin.routes.Changelogs')</h2>
+                <h2>@lang('admin.routes.Operationlogs')</h2>
                 @if($items->count())
                     <a href="#!" class="btn btn-danger btn-sm pull-right multi-action-btn" data-action="1"> 
                         <i class="fa fa-trash"></i> @lang('admin.remove_checkeds')
@@ -55,25 +55,23 @@
                     </thead>
                     <tbody>
                         @forelse($items as $key => $item)
-                        <?php 
-                            $model_name = $item->model_name . 's';
-
-                            if(substr($item->model_name, -1) == 'y'){
-                                $model_name = substr_replace($item->model_name,"",-1) . 'ies';
-                            }elseif(substr($item->model_name, -1) == 's'){
-                                $model_name = $item->model_name;
-                            }
-                        ?>
+                            @php
+                                $related_url = $item->relatedModelUrl();
+                            @endphp
                             <tr>
                                 <th scope="row">{{ $key+=1 }}</th>
-                                <td>{{ $item->admin->name . ' ' . $item->admin->surname }}</td>
+                                <td>{{ $item->admin ? trim($item->admin->name . ' ' . $item->admin->surname) : '-' }}</td>
                                 <td><code>{{ $item->ip_address }}</code></td>
-                                <td>{{ trans('admin.routes.'.str_replace(' ', '',$model_name)) }}</td>
+                                <td>{{ $item->relatedModelLabel() }}</td>
                                 <td>{{ $item->action }}</td>
                                 <td>
-                                    <a href="{{ route($item->getRelateModelUrl($item->id), $item->model_id) }}">
-                                        @lang('admin.check_model')
-                                    </a>
+                                    @if ($related_url)
+                                        <a href="{{ $related_url }}">
+                                            @lang('admin.check_model')
+                                        </a>
+                                    @else
+                                        <span class="text-muted">-</span>
+                                    @endif
                                 </td>
                                 <td>{{ $item->created_at }}</td>
                                 <td class="text-center">
@@ -82,7 +80,7 @@
                                 <td>
                                     <button class="btn btn-danger btn-sm pull-right delete" 
                                             data-id="{{ $item->id }}"
-                                            data-table="changelogs"
+                                            data-table="{{ $main_table }}"
                                             data-check-childs-here="{{ $check_childs_here }}"
                                     > 
                                         <i class="fa fa-trash"></i>

@@ -1,15 +1,13 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Route;
 class UserLog extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'model_path',
         'model_name',
@@ -18,23 +16,61 @@ class UserLog extends Model
         'ip_address',
         'action',
     ];
-
     public function admin(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Admin::class);
     }
-
-    public function getRelateModelUrl($id)
+    /*
+     * model_name ჩაწერის მომენტში ტექსტად ინახება, ამიტომ მისგან მარშრუტის
+     * სახელის გამოცნობა საიმედო არაა: Faq-ს შეესაბამება EditFaq და არა EditFaqs.
+     * ვაგროვებთ შესაძლო ვარიანტებს და ვირჩევთ იმას, რომელიც ნამდვილად არსებობს.
+     */
+    public function nameCandidates(): array
     {
-        $model = static::find($id);
-        $route = 'Edit'.$model->model_name.'s';
-
-        if (substr($model->model_name, -1) == 'y') {
-            $route = 'Edit'.substr_replace($model->model_name, '', -1).'ies';
-        } elseif (substr($model->model_name, -1) == 's') {
-            $route = 'Edit'.$model->model_name;
+        $name = str_replace(' ', '', (string) $this->model_name);
+        if ($name === '') {
+            return [];
         }
-
-        return str_replace(' ', '', $route);
+        $candidates = [$name];
+        if (str_ends_with($name, 'y')) {
+            $candidates[] = substr($name, 0, -1).'ies';
+        } elseif (! str_ends_with($name, 's')) {
+            $candidates[] = $name.'s';
+        }
+        return array_values(array_unique($candidates));
+    }
+    public function relatedRouteName(): ?string
+    {
+        foreach ($this->nameCandidates() as $candidate) {
+            if (Route::has('Edit'.$candidate)) {
+                return 'Edit'.$candidate;
+            }
+        }
+        return null;
+    }
+    /*
+     * null ბრუნდება, როცა შესაბამისი მარშრუტი არ არსებობს - მაგალითად ისეთი
+     * ჩანაწერისთვის, რომლის მოდელიც წაშლილია. შაბლონი ასეთ დროს ბმულს არ ხატავს.
+     */
+    public function relatedModelUrl(): ?string
+    {
+        $name = $this->relatedRouteName();
+        if (! $name) {
+            return null;
+        }
+        $route = Route::getRoutes()->getByName($name);
+        if ($route && count($route->parameterNames())) {
+            return route($name, $this->model_id);
+        }
+        return route($name);
+    }
+    public function relatedModelLabel(): string
+    {
+        foreach ($this->nameCandidates() as $candidate) {
+            if (Lang::has('admin.routes.'.$candidate)) {
+                return trans('admin.routes.'.$candidate);
+            }
+        }
+        return (string) $this->model_name;
     }
 }
