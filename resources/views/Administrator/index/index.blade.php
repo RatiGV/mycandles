@@ -36,7 +36,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-md-3">
+        {{-- <div class="col-md-3">
             <a href="{{ route('Newses') }}">
                 <div class="card-counter info">
                     <i class="fas fa-newspaper"></i>
@@ -44,7 +44,7 @@
                     <span class="count-name">@lang('admin.routes.News')</span>
                 </div>
             </a>
-        </div>
+        </div> --}}
         <div class="col-md-3">
             <a href="{{ route('EditTextpages',1) }}">
                 <div class="card-counter warning">
@@ -63,7 +63,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-md-3">
+        {{-- <div class="col-md-3">
             <a href="{{ route('Users') }}">
                 <div class="card-counter other">
                     <i class="fa fa-users"></i>
@@ -71,8 +71,8 @@
                     <span class="count-name">@lang('admin.routes.Users')</span>
                 </div>
             </a>
-        </div>
-        <div class="col-md-3">
+        </div> --}}
+        {{-- <div class="col-md-3">
             <a href="{{ route('Orders') }}">
                 <div class="card-counter danger">
                     <i class="fas fa-shopping-bag"></i>
@@ -80,7 +80,7 @@
                     <span class="count-name">@lang('admin.routes.Orders')</span>
                 </div>
             </a>
-        </div>
+        </div> --}}
     </div>
 </div>
 @if(Session::get('admin')->role === 1)
@@ -111,7 +111,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-md-3">
+        {{-- <div class="col-md-3">
             <a href="{{ route('Districts') }}">
                 <div class="card-counter warning">
                     <i class="fas fa-map-marker-alt"></i>
@@ -119,7 +119,7 @@
                     <span class="count-name">@lang('admin.routes.Districts')</span>
                 </div>
             </a>
-        </div>
+        </div> --}}
         <div class="col-md-3">
             <a href="{{ route('EditInformations') }}">
                 <div class="card-counter success">
@@ -158,6 +158,7 @@
         </div>
     </div>
 </div>
+@if (false)
 <!-- ჯამური თანხები დღეების მიხედვით -->
 <div class="x_panel" id="totals-by-days-panel">
     <div class="x_title">
@@ -296,11 +297,12 @@
 </div>
 <!-- /ყველაზე გაყიდვადი კატეგორიები და უბნები -->
 @endif
+@endif
 @endsection
 @push('js')
 <script>
 
-    @if(Session::get('admin')->role === 1)
+    @if(false)
     window.onload = function () {
 
         /*********************** ჯამური თანხები დღეების მიხედვით ********************/

@@ -72,18 +72,18 @@
                                         <span class="menu-text">@lang('admin.routes.Banners')</span>
                                     </a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="{{ route('Partners') }}" title="@lang('admin.routes.Partners')">
                                         <i class="khvich-i fas fa-handshake"></i>
                                         <span class="menu-text">@lang('admin.routes.Partners')</span>
                                     </a>
-                                </li>
-                                <li>
+                                </li> --}}
+                                {{-- <li>
                                     <a href="{{ route('Actors') }}" title="@lang('admin.routes.Actors')">
                                         <i class="khvich-i fab fa-autoprefixer"></i>
                                         <span class="menu-text">@lang('admin.routes.Actors')</span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a title="@lang('admin.routes.Products')">
                                         <i class="khvich-i fab fa-product-hunt"></i>
@@ -96,7 +96,7 @@
                                         <li><a href="{{ route('Brands') }}"> @lang('admin.routes.Brands')</a></li>
                                     </ul>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a title="@lang('admin.routes.News')">
                                         <i class="khvich-i fas fa-newspaper"></i>
                                         <span class="menu-text">@lang('admin.routes.News')</apan>
@@ -107,7 +107,7 @@
                                         <li><a href="{{ route('NewsCategories') }}"> @lang('admin.categories')</a></li>
                                         <li><a href="{{ route('Tags') }}"> @lang('admin.routes.Tags')</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a href="{{ route('Textpages') }}" title="@lang('admin.routes.Textpages')">
                                         <i class="khvich-i fas fa-text-width"></i>
@@ -120,24 +120,24 @@
                                         <span class="menu-text">@lang('admin.routes.Faq')</span>
                                     </a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="{{ route('Users') }}" title="@lang('admin.routes.Users')">
                                         <i class="khvich-i fas fa-users"></i>
                                         <span class="menu-text">@lang('admin.routes.Users')</span>
                                     </a>
-                                </li>
-                                <li>
+                                </li> --}}
+                                {{-- <li>
                                     <a href="{{ route('Orders') }}" title="@lang('admin.routes.Orders')">
                                         <i class="khvich-i fas fa-shopping-cart"></i>
                                         <span class="menu-text">@lang('admin.routes.Orders')</span>
                                     </a>
-                                </li>
-                                <li>
+                                </li> --}}
+                                {{-- <li>
                                     <a href="{{ route('payment-gateaway') }}" title="@lang('admin.routes.PaymentGateaways')">
                                         <i class="khvich-i fas fa-credit-card"></i>
                                         <span class="menu-text">@lang('admin.routes.PaymentGateaways')</span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 @if (Session::get('admin')->role === 1)
                                     {{-- <li>
                                         <a href="{{ route('Coupons') }}" title="@lang('admin.routes.Coupons')">
@@ -145,12 +145,12 @@
                                             <span class="menu-text">@lang('admin.routes.Coupons')</span>
                                         </a>
                                     </li> --}}
-                                    <li>
+                                    {{-- <li>
                                         <a href="{{ route('Districts') }}" title="@lang('admin.routes.Districts')">
                                             <i class="khvich-i fas fa-map-marker-alt"></i>
                                             <span class="menu-text">@lang('admin.routes.Districts')</span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li>
                                         <a href="{{ route('EditInformations') }}" title="@lang('admin.routes.Informations')">
                                             <i class="khvich-i fas fa-info-circle"></i>
