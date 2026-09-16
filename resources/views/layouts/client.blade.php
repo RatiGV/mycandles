@@ -141,13 +141,13 @@
                                                         @csrf
                                                     </form>
                                                 @endauth
-                                                @guest
+                                                {{-- @guest
                                                     <li><a class="dropdown-item"
                                                             href="{{ route('signin') }}">{{ trans('Login') }}</a>
                                                     </li>
                                                     <li><a class="dropdown-item"
                                                             href="{{ route('signup') }}">{{ trans('Register') }}</a></li>
-                                                @endguest
+                                                @endguest --}}
                                             </ul>
                                         </li>
                                         <li class="d-none d-lg-block">
@@ -155,12 +155,12 @@
                                                 <i class="pe-7s-like"></i>
                                             </a>
                                         </li>
-                                        <li class="minicart-wrap me-3 me-lg-0">
+                                        {{-- <li class="minicart-wrap me-3 me-lg-0">
                                             <a href="#miniCart" class="minicart-btn toolbar-btn">
                                                 <i class="pe-7s-shopbag"></i>
                                                 <span class="quantity cart-quantity">{{ \Cart::getContent()->count() }}</span>
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         <li class="mobile-menu_wrap d-block d-lg-none">
                                             <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">
                                                 <i class="pe-7s-menu"></i>
@@ -188,11 +188,11 @@
                                                 <span class="mm-text">{{ trans('Shop') }}</span>
                                             </a>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <a href="{{ route('clientBlogs') }}">
                                                 <span class="mm-text">{{ trans('Blog') }}</span>
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a href="{{ route('clientAbout') }}">{{ trans('About us') }}</a>
                                         </li>
@@ -231,11 +231,11 @@
                                                     <span class="mm-text">{{ trans('Shop') }}</span>
                                                 </a>
                                             </li>
-                                            <li>
+                                            {{-- <li>
                                                 <a href="{{ route('clientBlogs') }}">
                                                     <span class="mm-text">{{ trans('Blog') }}</span>
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                             <li>
                                                 <a href="{{ route('clientAbout') }}">{{ trans('About us') }}</a>
                                             </li>
@@ -266,10 +266,10 @@
                                                     <li><a class="dropdown-item" href="{{ route('myAccount') }}">{{ trans('My Account') }}</a></li>
                                                 @endauth
 
-                                                @guest
+                                                {{-- @guest
                                                     <li><a class="dropdown-item" href="{{ route('signin') }}">{{ trans('Login') }}</a></li>
                                                     <li><a class="dropdown-item" href="{{ route('signup') }}">{{ trans('Register') }}</a></li>
-                                                @endguest
+                                                @endguest --}}
                                             </ul>
                                         </li>
                                         <li class="d-none d-lg-block">
@@ -277,12 +277,12 @@
                                                 <i class="pe-7s-like"></i>
                                             </a>
                                         </li>
-                                        <li class="minicart-wrap me-3 me-lg-0">
+                                        {{-- <li class="minicart-wrap me-3 me-lg-0">
                                             <a href="#miniCart" class="minicart-btn toolbar-btn">
                                                 <i class="pe-7s-shopbag"></i>
                                                 <span class="quantity cart-quantity">{{ \Cart::getContent()->count() }}</span>
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         <li class="mobile-menu_wrap d-block d-lg-none">
                                             <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">
                                                 <i class="pe-7s-menu"></i>
@@ -347,12 +347,10 @@
                                         @auth
                                             <li><a class="dropdown-item" href="{{ route('myAccount') }}">{{ trans('My Account') }}</a></li>
                                         @endauth
-                                        @guest
+                                        {{-- @guest
                                             <li><a class="dropdown-item" href="{{ route('signin') }}">{{ trans('Login') }}</a></li>
                                             <li><a class="dropdown-item" href="{{ route('signup') }}">{{ trans('Register') }}</a></li>
-                                        @endguest
-
-
+                                        @endguest --}}
                                     </ul>
                                 </li>
                                 <li>
@@ -375,11 +373,11 @@
                                             <span class="mm-text">{{ trans('Shop') }}</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a href="{{ route('clientBlogs') }}">
                                             <span class="mm-text">{{ trans('Blog') }}</span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li>
                                         <a href="{{ route('clientAbout') }}">
                                             <span class="mm-text">{{ trans('About us') }}</span>
@@ -495,7 +493,7 @@
                             <div class="footer-widget-item">
                                 <h3 class="footer-widget-title">{{ trans('My Account') }}</h3>
                                 <ul class="footer-widget-list-item">
-                                    @guest
+                                    {{-- @guest
                                         <li>
                                             <a href="{{ route('signin') }}">{{ trans('Sign in') }}</a>
                                         </li>
@@ -504,10 +502,10 @@
                                         <li>
                                             <a href="{{ route('signup') }}">{{ trans('Sign up') }}</a>
                                         </li>
-                                    @endguest
-                                    <li>
+                                    @endguest --}}
+                                    {{-- <li>
                                         <a href="{{ route('clientCart') }}">{{ trans('Cart') }}</a>
-                                    </li>
+                                    </li> --}}
                                     <li>
                                         <a href="{{ route('clientWishlist') }}">{{ trans('Wishlist') }}</a>
                                     </li>

@@ -211,7 +211,7 @@
     <!-- Product Area End Here -->
 
 
-    @if ($blogs->isNotEmpty())
+    @if (false && $blogs->isNotEmpty())
         <!-- Begin Blog Area -->
         <div class="blog-area section-space-bottom-100">
             <div class="container">
