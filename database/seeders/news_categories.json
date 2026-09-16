@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "permalink": "world",
+    "sort": 1,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "World"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "permalink": "business",
+    "sort": 2,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Business"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "permalink": "technology",
+    "sort": 3,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Technology"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "permalink": "science",
+    "sort": 4,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Science"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "permalink": "health",
+    "sort": 5,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Health"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "permalink": "entertainment",
+    "sort": 6,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Entertainment"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "permalink": "sports",
+    "sort": 7,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Sports"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "permalink": "environment",
+    "sort": 8,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Environment"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "permalink": "politics",
+    "sort": 9,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Politics"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "permalink": "travel",
+    "sort": 10,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Travel"
+      }
+    ]
+  }
+]

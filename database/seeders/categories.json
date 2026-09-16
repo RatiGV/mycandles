@@ -1,0 +1,257 @@
+[
+  {
+    "id": 1,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "electronics",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Electronics",
+        "short_description": "Electronics"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "smartphones",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Smartphones",
+        "short_description": "Smartphones"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "laptops",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Laptops",
+        "short_description": "Laptops"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "smartwatches",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Smartwatches",
+        "short_description": "Smartwatches"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "home-appliances",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Home Appliances",
+        "short_description": "Home Appliances"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "furniture",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Furniture",
+        "short_description": "Furniture"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "gaming",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Gaming",
+        "short_description": "Gaming"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "fashion",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Fashion",
+        "short_description": "Fashion"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "beauty",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Beauty",
+        "short_description": "Beauty"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "sports",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Sports",
+        "short_description": "Sports"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "automotive",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Automotive",
+        "short_description": "Automotive"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "tools",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Tools",
+        "short_description": "Tools"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "garden-outdoors",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Garden & Outdoors",
+        "short_description": "Garden & Outdoors"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "toys",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Toys",
+        "short_description": "Toys"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "parent_id": null,
+    "level": 1,
+    "image": null,
+    "permalink": "pet-supplies",
+    "status": 1,
+    "created_at": "2025-11-30 17:31:09",
+    "updated_at": "2025-11-30 17:31:09",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Pet Supplies",
+        "short_description": "Pet Supplies"
+      }
+    ]
+  }
+]

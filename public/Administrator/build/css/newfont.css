@@ -1,0 +1,9 @@
+@font-face {
+   font-family: 'segoe';
+   src: url('./segoeui.ttf') format('truetype')
+}
+
+@font-face {
+   font-family: 'panton';
+   src: url('./pantonmtav3-bold.ttf') format('truetype')
+}

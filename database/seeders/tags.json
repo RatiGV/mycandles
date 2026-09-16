@@ -1,0 +1,327 @@
+[
+  {
+    "id": 1,
+    "sort": 1,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Breaking"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "sort": 2,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Analysis"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "sort": 3,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Opinion"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "sort": 4,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Interview"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "sort": 5,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Investigation"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "sort": 6,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Climate"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "sort": 7,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Technology"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "sort": 8,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "AI"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "sort": 9,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Finance"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "sort": 10,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Markets"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "sort": 11,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Startup"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "sort": 12,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Policy"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "sort": 13,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Elections"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "sort": 14,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Space"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "sort": 15,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Health"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "sort": 16,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Medicine"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "sort": 17,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Travel"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "sort": 18,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Culture"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "sort": 19,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Sports"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "sort": 20,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Science"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "sort": 21,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Environment"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "sort": 22,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Security"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "sort": 23,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Education"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "sort": 24,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Energy"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "sort": 25,
+    "status": 1,
+    "created_at": "2025-12-01 00:47:35",
+    "updated_at": "2025-12-01 00:47:35",
+    "translations": [
+      {
+        "lang": "en",
+        "title": "Innovation"
+      }
+    ]
+  }
+]
