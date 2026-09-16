@@ -38,6 +38,47 @@ class Information extends Model
     {
         return DB::table('configurations')->select('admin_lang')->first()->admin_lang;
     }
+    /*
+     * თვალთვალის ველებში ინახება მხოლოდ იდენტიფიკატორი და არა სრული <script> კოდი.
+     * სრული კოდის გაგზავნისას mod_security ბლოკავდა POST მოთხოვნას სერვერზე,
+     * სანამ ის PHP-მდე მივიდოდა. სკრიპტებს ახლა შაბლონი აგენერირებს.
+     */
+    public static function extractPixelId($value)
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+        $value = trim((string) $value);
+        if (preg_match('/^\d{6,20}$/', $value)) {
+            return $value;
+        }
+        if (preg_match('/fbq\s*\(\s*[\'"]init[\'"]\s*,\s*[\'"](\d{6,20})[\'"]/i', $value, $matches)) {
+            return $matches[1];
+        }
+        if (preg_match('/\b(\d{10,20})\b/', $value, $matches)) {
+            return $matches[1];
+        }
+        return null;
+    }
+    public static function extractAnalyticsId($value)
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+        $value = trim((string) $value);
+        if (preg_match('/\b(G-[A-Z0-9]{4,15}|UA-\d{4,12}-\d{1,4}|GTM-[A-Z0-9]{4,15})\b/i', $value, $matches)) {
+            return strtoupper($matches[1]);
+        }
+        return null;
+    }
+    public function setPixelAttribute($value)
+    {
+        $this->attributes['pixel'] = self::extractPixelId($value);
+    }
+    public function setAnalyticsAttribute($value)
+    {
+        $this->attributes['analytics'] = self::extractAnalyticsId($value);
+    }
     /**
      * ერთადერთი ჩანაწერის მოძებნა.
      * თანმიმდევრობა: გადმოცემული id, ნაგულისხმევი id, ცხრილის პირველი ჩანაწერი.

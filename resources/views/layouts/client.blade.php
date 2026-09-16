@@ -50,6 +50,7 @@
        window.ADD_TO_CART_URL = "/ajax-add-cart";
     </script>
 
+    @include('partials.tracking')
 </head>
 
 <body>
