@@ -1026,11 +1026,35 @@ $(document).on("click", ".add-cart-product-inner", function (e) {
         });
     }
 
+    // მცირე შეტყობინება (success/error) ეკრანის კუთხეში
+    function showWishlistToast(message, isSuccess) {
+        var messages = window.WISHLIST_MESSAGES || {};
+        message = message || (isSuccess ? messages.added : messages.error) || "";
+
+        var $toast = $('<div class="wishlist-toast"></div>')
+            .addClass(isSuccess ? "wishlist-toast--success" : "wishlist-toast--error")
+            .text(message);
+
+        $("body").append($toast);
+
+        setTimeout(function () {
+            $toast.addClass("is-visible");
+        }, 10);
+
+        setTimeout(function () {
+            $toast.removeClass("is-visible");
+            setTimeout(function () {
+                $toast.remove();
+            }, 300);
+        }, 2500);
+    }
+
     // Wishlist – დამატება ----------------------მარიამი-----------------
     $(document).on("click", ".add-to-wishlist-product", function (e) {
         e.preventDefault();
 
         let productId = $(this).data("id");
+        let messages = window.WISHLIST_MESSAGES || {};
 
         $.ajax({
             url: "/ajax-add-wishlist",
@@ -1041,11 +1065,16 @@ $(document).on("click", ".add-cart-product-inner", function (e) {
             },
             success: function (response) {
                 if (response.status) {
-                    console.log("Added to wishlist");
+                    showWishlistToast(messages.added, true);
+                } else if (response.reason === "already_added") {
+                    showWishlistToast(messages.alreadyAdded, false);
+                } else {
+                    showWishlistToast(messages.unavailable, false);
                 }
             },
             error: function (xhr) {
                 console.log("Error:", xhr.responseText);
+                showWishlistToast(messages.error, false);
             },
         });
     });
@@ -1056,6 +1085,7 @@ $(document).on("click", ".add-cart-product-inner", function (e) {
 
         let btn = $(this);
         let productId = btn.data("id");
+        let messages = window.WISHLIST_MESSAGES || {};
 
         $.ajax({
             url: "/ajax-remove-wishlist",
@@ -1069,10 +1099,14 @@ $(document).on("click", ".add-cart-product-inner", function (e) {
                     btn.closest("tr.wishlist-items").fadeOut(200, function () {
                         $(this).remove();
                     });
+                    showWishlistToast(messages.removed, true);
+                } else {
+                    showWishlistToast(messages.error, false);
                 }
             },
             error: function (xhr) {
                 console.log("Error:", xhr.responseText);
+                showWishlistToast(messages.error, false);
             },
         });
     });

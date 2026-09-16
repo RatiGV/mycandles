@@ -23,19 +23,19 @@ class ProfileController extends Controller
         $productId = (int) $request->id;
 
         if (!$productId) {
-            return response()->json(['status' => 0], 404);
+            return response()->json(['status' => 0, 'reason' => 'invalid'], 404);
         }
 
         $product = Product::find($productId);
 
         if (!$product || $product->finished) {
-            return response()->json(['status' => 0], 200);
+            return response()->json(['status' => 0, 'reason' => 'unavailable'], 200);
         }
 
         $wishlist = new WishlistService;
 
         if ($wishlist->has($productId)) {
-            return response()->json(['status' => 0], 200);
+            return response()->json(['status' => 0, 'reason' => 'already_added'], 200);
         }
 
         $wishlist->add($productId);

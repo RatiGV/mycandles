@@ -1,0 +1,25 @@
+.wishlist-toast {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 99999;
+    padding: 12px 20px;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 14px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+.wishlist-toast.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.wishlist-toast--success {
+    background-color: #2fb344;
+}
+.wishlist-toast--error {
+    background-color: #d9534f;
+}
