@@ -95,6 +95,8 @@ class ProductController extends Controller
 
         $product = Product::with('trans')->findOrFail($productId);
 
+        $slug = $product->slug ?? $product->id . '-' . \Illuminate\Support\Str::slug($product->trans->title, '-', false);
+
         return response()->json(
             [
                 'status' => 1,
@@ -103,7 +105,8 @@ class ProductController extends Controller
                     'title' => $product->trans->title,
                     'description' => $product->trans->short_description,
                     'price' => $product->price,
-                    'image' => $product->image
+                    'image' => $product->image,
+                    'url' => route('clientProductsInner', $slug)
                 ]
             ]);
 

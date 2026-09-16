@@ -92,7 +92,7 @@
                                 </li>
                                 @endif
                                 <li class="wishlist-btn-wrap">
-                                    <a class="custom-circle-btn add-to-wishlist-product" data-id="{{ $product->id }}"
+                                    <a class="custom-circle-btn add-to-wishlist-product @if((new \App\Services\WishlistService())->has($product->id)) in-wishlist @endif" data-id="{{ $product->id }}"
                                         href="#">
                                         <i class="pe-7s-like"></i>
                                     </a>
@@ -224,7 +224,7 @@
                                             <div class="product-add-action">
                                                 <ul>
                                                     <li>
-                                                        <a href="#" class="add-to-wishlist-product"
+                                                        <a href="#" class="add-to-wishlist-product @if((new \App\Services\WishlistService())->has($related->id)) in-wishlist @endif"
                                                             data-tippy="{{ trans('Add to wishlist') }}"
                                                             data-id="{{ $related->id }}" data-tippy-inertia="true"
                                                             data-tippy-animation="shift-away" data-tippy-delay="50"

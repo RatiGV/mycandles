@@ -23,3 +23,30 @@
 .wishlist-toast--error {
     background-color: #d9534f;
 }
+.product-add-action ul li a.add-to-wishlist-product.in-wishlist i {
+    background-color: #abd373;
+    color: #ffffff;
+}
+.single-product-content .quantity-with-btn li a.custom-circle-btn.add-to-wishlist-product.in-wishlist i {
+    background-color: #abd373;
+    color: #ffffff;
+}
+.wishlist-nav-link {
+    position: relative;
+    display: inline-block;
+}
+.wishlist-quantity {
+    display: inline-block;
+    min-width: 18px;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 4px;
+    border-radius: 50%;
+    background-color: #d9534f;
+    color: #ffffff;
+    font-size: 11px;
+    text-align: center;
+    position: absolute;
+    top: -8px;
+    right: -10px;
+}

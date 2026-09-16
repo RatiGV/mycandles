@@ -1049,15 +1049,23 @@ $(document).on("click", ".add-cart-product-inner", function (e) {
         }, 2500);
     }
 
-    // Wishlist – დამატება ----------------------მარიამი-----------------
+    // Wishlist – დამატება/წაშლა (ტოგლი) ----------------------მარიამი-----------------
+    function updateWishlistCount(count) {
+        if (typeof count !== "undefined") {
+            $(".wishlist-quantity").text(count);
+        }
+    }
+
     $(document).on("click", ".add-to-wishlist-product", function (e) {
         e.preventDefault();
 
         let productId = $(this).data("id");
         let messages = window.WISHLIST_MESSAGES || {};
+        let isActive = $(this).hasClass("in-wishlist");
+        let $buttons = $('.add-to-wishlist-product[data-id="' + productId + '"]');
 
         $.ajax({
-            url: "/ajax-add-wishlist",
+            url: isActive ? "/ajax-remove-wishlist" : "/ajax-add-wishlist",
             type: "POST",
             data: {
                 id: productId,
@@ -1065,8 +1073,12 @@ $(document).on("click", ".add-cart-product-inner", function (e) {
             },
             success: function (response) {
                 if (response.status) {
-                    showWishlistToast(messages.added, true);
+                    $buttons.toggleClass("in-wishlist", !isActive);
+                    updateWishlistCount(response.count);
+                    showWishlistToast(isActive ? messages.removed : messages.added, true);
                 } else if (response.reason === "already_added") {
+                    $buttons.addClass("in-wishlist");
+                    updateWishlistCount(response.count);
                     showWishlistToast(messages.alreadyAdded, false);
                 } else {
                     showWishlistToast(messages.unavailable, false);
@@ -1096,6 +1108,8 @@ $(document).on("click", ".add-cart-product-inner", function (e) {
             },
             success: function (response) {
                 if (response.status) {
+                    $('.add-to-wishlist-product[data-id="' + productId + '"]').removeClass("in-wishlist");
+                    updateWishlistCount(response.count);
                     btn.closest("tr.wishlist-items").fadeOut(200, function () {
                         $(this).remove();
                     });
@@ -1179,6 +1193,10 @@ $(document).on("click", ".quickview-btn", function (e) {
             $modal.find(".quickview-title").text(p.title || "");
             $modal.find(".quickview-price").text((p.price || "") + " GEL");
             $modal.find(".quickview-description").text(p.description || "");
+
+            if (p.url) {
+                $modal.find(".quickview-link").attr("href", p.url);
+            }
 
             if (p.image) {
                 $modal

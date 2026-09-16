@@ -164,8 +164,9 @@
                                             </ul>
                                         </li> --}}
                                         <li class="d-none d-lg-block">
-                                            <a href="{{ route('clientWishlist') }}">
+                                            <a href="{{ route('clientWishlist') }}" class="wishlist-nav-link">
                                                 <i class="pe-7s-like"></i>
+                                                <span class="wishlist-quantity">{{ count((new \App\Services\WishlistService())->ids()) }}</span>
                                             </a>
                                         </li>
                                         {{-- <li class="minicart-wrap me-3 me-lg-0">
@@ -208,6 +209,9 @@
                                         </li> --}}
                                         <li>
                                             <a href="{{ route('clientAbout') }}">{{ trans('About us') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('clientFaq') }}">{{ trans('FAQ') }}</a>
                                         </li>
                                         <li>
                                             <a href="{{ route('clientContact') }}">{{ trans('Contact us') }}</a>
@@ -253,6 +257,9 @@
                                                 <a href="{{ route('clientAbout') }}">{{ trans('About us') }}</a>
                                             </li>
                                             <li>
+                                                <a href="{{ route('clientFaq') }}">{{ trans('FAQ') }}</a>
+                                            </li>
+                                            <li>
                                                 <a href="{{ route('clientContact') }}">{{ trans('Contact us') }}</a>
                                             </li>
                                         </ul>
@@ -286,8 +293,9 @@
                                             </ul>
                                         </li> --}}
                                         <li class="d-none d-lg-block">
-                                            <a href="{{ route('clientWishlist') }}">
+                                            <a href="{{ route('clientWishlist') }}" class="wishlist-nav-link">
                                                 <i class="pe-7s-like"></i>
+                                                <span class="wishlist-quantity">{{ count((new \App\Services\WishlistService())->ids()) }}</span>
                                             </a>
                                         </li>
                                         {{-- <li class="minicart-wrap me-3 me-lg-0">
@@ -367,8 +375,9 @@
                                     </ul>
                                 </li> --}}
                                 <li>
-                                    <a href="{{ route('clientWishlist') }}">
+                                    <a href="{{ route('clientWishlist') }}" class="wishlist-nav-link">
                                         <i class="pe-7s-like"></i>
+                                        <span class="wishlist-quantity">{{ count((new \App\Services\WishlistService())->ids()) }}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -394,6 +403,11 @@
                                     <li>
                                         <a href="{{ route('clientAbout') }}">
                                             <span class="mm-text">{{ trans('About us') }}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('clientFaq') }}">
+                                            <span class="mm-text">{{ trans('FAQ') }}</span>
                                         </a>
                                     </li>
                                     <li>
@@ -574,7 +588,7 @@
                             <div class="swiper-container modal-slider">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <a href="#" class="single-img">
+                                        <a href="#" class="single-img quickview-link">
                                             <img class="img-full quickview-image"
                                                  src="{{ asset('assets/images/product/large-size/1-1-570x633.jpg') }}"
                                                  alt="">
@@ -588,7 +602,7 @@
                     <div class="col-lg-6 pt-5 pt-lg-0">
                         <div class="single-product-content">
 
-                            <h2 class="title quickview-title"></h2>
+                            <h2 class="title"><a class="quickview-link quickview-title" href="#"></a></h2>
 
                            <div class="price-box">
                                 <span class="new-price quickview-price"></span>
@@ -597,6 +611,7 @@
 
                             <p class="short-desc quickview-description"></p>
                             <ul class="quantity-with-btn">
+                                @if (false)
                                 <li class="quantity">
                                     <div class="cart-plus-minus">
                                         <input class="cart-plus-minus-box" value="1" type="text">
@@ -604,6 +619,7 @@
                                         <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
                                     </div>
                                 </li>
+                                @endif
 
                                 @if (false)
                                     <li class="add-to-cart">

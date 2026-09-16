@@ -144,7 +144,7 @@
                                                          <div class="product-add-action">
                                                              <ul>
                                                                  <li>
-                                                                     <a href="#" class="add-to-wishlist-product"
+                                                                     <a href="#" class="add-to-wishlist-product @if((new \App\Services\WishlistService())->has($product->id)) in-wishlist @endif"
                                                                          data-tippy="{{ trans('Add to wishlist') }}"
                                                                          data-tippy-inertia="true"
                                                                          data-id="{{ $product->id }}"
@@ -234,7 +234,7 @@
                                                          <div class="product-add-action">
                                                              <ul>
                                                                  <li>
-                                                                     <a href="#" class="add-to-wishlist-product"
+                                                                     <a href="#" class="add-to-wishlist-product @if((new \App\Services\WishlistService())->has($product->id)) in-wishlist @endif"
                                                                          data-id="{{ $product->id }}"
                                                                          data-tippy="{{ trans('Add to wishlist') }}"
                                                                          data-tippy-inertia="true"
