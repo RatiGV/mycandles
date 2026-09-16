@@ -135,20 +135,26 @@
                             </div>
                         @empty
                         @endforelse
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('pixel') ? 'bad' : '' }}">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                 @lang('admin.pixel')
                             </label>
                             <div class="col-md-7 col-sm-7 col-xs-12">
-                                <textarea name="pixel" class="form-control col-md-7 col-xs-12" rows="5">{{ old('pixel', $item->pixel) }}</textarea>
+                                <input type="text" name="pixel" value="{{ old('pixel', $item->pixel) }}"
+                                    class="form-control col-md-7 col-xs-12" maxlength="20"
+                                    placeholder="123456789012345">
+                                <span class="help-block">@lang('admin.pixel_hint')</span>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('analytics') ? 'bad' : '' }}">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                 @lang('admin.analytics')
                             </label>
                             <div class="col-md-7 col-sm-7 col-xs-12">
-                                <textarea name="analytics" class="form-control col-md-7 col-xs-12" rows="5">{{ old('analytics', $item->analytics) }}</textarea>
+                                <input type="text" name="analytics" value="{{ old('analytics', $item->analytics) }}"
+                                    class="form-control col-md-7 col-xs-12" maxlength="20"
+                                    placeholder="G-XXXXXXXXXX">
+                                <span class="help-block">@lang('admin.analytics_hint')</span>
                             </div>
                         </div>
                         @foreach ($file_columns as $file_column)

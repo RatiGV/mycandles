@@ -76,7 +76,7 @@ class InformationController extends BaseController
         if (! $item) {
             return redirect()->route('AdminMainPage')->with('error', true);
         }
-        $this->validate($request, $this->rules());
+        $this->validate($request, $this->rules(), $this->messages());
         $request->session()->flash('last_edited_lang', $request->last_edited_lang);
         if (! $this->model->updateItem($request, $item)) {
             $request->session()->flash('error', true);
@@ -90,16 +90,29 @@ class InformationController extends BaseController
     }
     private function rules()
     {
+        /*
+         * pixel და analytics წესები მასივის სახითაა ჩაწერილი, რადგან რეგულარული
+         * გამოსახულება შეიცავს | სიმბოლოს, რომელსაც Laravel წესების გამყოფად აღიქვამს.
+         */
         $rules = [
             'translates.'.$this->configuration->admin_lang.'.title' => 'required|string|max:255',
             'translates.*.slogan' => 'nullable|string|max:90',
             'longitude' => 'nullable|numeric',
             'latitude' => 'nullable|numeric',
+            'pixel' => ['nullable', 'regex:/^\d{6,20}$/'],
+            'analytics' => ['nullable', 'regex:/^(G-[A-Za-z0-9]{4,15}|UA-\d{4,12}-\d{1,4}|GTM-[A-Za-z0-9]{4,15})$/'],
         ];
         foreach (Information::$file_columns as $column) {
             $rules[$column] = 'nullable|file|mimes:jpeg,jpg,png,webp,svg,ico';
         }
         return $rules;
+    }
+    private function messages()
+    {
+        return [
+            'pixel.regex' => trans('admin.pixel_id_invalid'),
+            'analytics.regex' => trans('admin.analytics_id_invalid'),
+        ];
     }
     private function viewData($item)
     {
