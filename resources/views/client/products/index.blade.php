@@ -177,6 +177,7 @@
 
 
 
+                                                                 @if (false)
                                                                  <li>
                                                                      <a href="#" class="add-to-cart-products"
                                                                          data-tippy="{{ trans('Add to cart') }}"
@@ -188,6 +189,7 @@
                                                                          <i class="pe-7s-cart"></i>
                                                                      </a>
                                                                  </li>
+                                                                 @endif
                                                              </ul>
                                                          </div>
                                                      </div>
@@ -266,6 +268,7 @@
 
 
 
+                                                                 @if (false)
                                                                  <li>
                                                                      <a href="#" class="add-to-cart-products"
                                                                          data-tippy="{{ trans('Add to cart') }}"
@@ -277,6 +280,7 @@
                                                                          <i class="pe-7s-cart"></i>
                                                                      </a>
                                                                  </li>
+                                                                 @endif
                                                              </ul>
                                                          </div>
                                                      </div>

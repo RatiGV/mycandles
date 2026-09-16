@@ -84,6 +84,10 @@ Route::prefix(LaravelLocalization::setLocale())->middleware('localeSessionRedire
 
     Route::post("/get-product-info", [ClientProductController::class, 'getProductInfo'])->name('getProductInfo');
 
+    Route::get("/wishlist", [ProfileController::class, 'wishlist'])->name('clientWishlist');
+    Route::post('/ajax-add-wishlist', [ProfileController::class, 'addToWishlist']);
+    Route::post('/ajax-remove-wishlist', [ProfileController::class, 'removeFromWishlist']);
+
     Route::group(['middleware' => ['guest']], function () {
         Route::get('/sign-up', [ProfileController::class, 'register'])->name('signup');
         Route::get('/sign-in', [ProfileController::class, 'login'])->name('signin');
@@ -91,15 +95,11 @@ Route::prefix(LaravelLocalization::setLocale())->middleware('localeSessionRedire
     });
 
     Route::group(['middleware' => ['auth']], function () {
-        Route::get("/wishlist", [ProfileController::class, 'wishlist'])->name('clientWishlist');
         Route::get("/account", [ProfileController::class, 'account'])->name('myAccount');
         Route::post("/account", [ProfileController::class, 'update'])->name('updateSettings');
         Route::get("/checkout", [ProfileController::class, 'checkout'])->name('checkout');
         Route::post('/checkout/payment/initiate', [CheckoutPaymentController::class, 'initiate'])->name('checkout.payment.initiate');
         Route::get('/payments/status/{payment}', [PaymentStatusController::class, 'show'])->name('payments.status');
-
-        Route::post('/ajax-add-wishlist', [ProfileController::class, 'addToWishlist']);
-        Route::post('/ajax-remove-wishlist', [ProfileController::class, 'removeFromWishlist']);
     });
 });
 

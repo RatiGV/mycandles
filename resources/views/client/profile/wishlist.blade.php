@@ -32,7 +32,9 @@
                                             <th class="cart-product-name">{{ trans('Product') }}</th>
                                             <th class="product-price">{{ trans('Unit Price') }}</th>
                                             <th class="product-stock-status">{{ trans('Stock Status') }}</th>
-                                            <th class="cart_btn">{{ trans('Add to cart') }}</th>
+                                            @if (false)
+                                                <th class="cart_btn">{{ trans('Add to cart') }}</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -54,7 +56,9 @@
                                             <td class="product-name"><a href="{{ route('clientProductsInner', $wishlist->slug ?? $wishlist->id . '-' . \Illuminate\Support\Str::slug($wishlist->trans->title, '-', false)) }}">{{ $wishlist->trans->title }}</a></td>
                                             <td class="product-price"><span class="amount">{{ getPrice($wishlist->price) }} GEL</span></td>
                                             <td class="product-stock-status"><span class="in-stock @if(!$wishlist->available) text-danger @endif">@if($wishlist->available) {{ trans('In stock') }} @else {{ trans('Out of Stock') }} @endif</span></td>
-                                            <td class="cart_btn"><a href="#" class="add-to-cart-products" data-id="{{ $wishlist->id }}">{{ trans('Add to cart') }}</a></td>
+                                            @if (false)
+                                                <td class="cart_btn"><a href="#" class="add-to-cart-products" data-id="{{ $wishlist->id }}">{{ trans('Add to cart') }}</a></td>
+                                            @endif
                                         </tr>
                                         @empty
                                         @endforelse

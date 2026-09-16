@@ -85,10 +85,12 @@
                                         <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
                                     </div>
                                 </li>
+                                @if (false)
                                 <li class="add-to-cart">
                                     <a class="btn btn-custom-size lg-size btn-pronia-primary add-cart-product-inner"
                                         href="#" data-id="{{ $product->id }}">{{ trans('Add to cart') }}</a>
                                 </li>
+                                @endif
                                 <li class="wishlist-btn-wrap">
                                     <a class="custom-circle-btn add-to-wishlist-product" data-id="{{ $product->id }}"
                                         href="#">
@@ -245,6 +247,7 @@
                                                   </li>
 
 
+                                                    @if (false)
                                                     <li>
                                                         <a href="#" class="add-to-cart-products"
                                                             data-tippy="{{ trans('Add to cart') }}"
@@ -254,6 +257,7 @@
                                                             <i class="pe-7s-cart"></i>
                                                         </a>
                                                     </li>
+                                                    @endif
                                                 </ul>
                                             </div>
                                         </div>

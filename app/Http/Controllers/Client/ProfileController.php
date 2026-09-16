@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\District;
 use Illuminate\Http\Request;
 use App\Services\CartService;
+use App\Services\WishlistService;
 use App\Services\Payments\GatewayConfigResolver;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -19,54 +20,40 @@ class ProfileController extends Controller
 
     public function addToWishlist(Request $request)
     {
-        if (Auth::check()) {
-            $user = Auth::user();
+        $productId = (int) $request->id;
 
-            if (!$request->id) {
-                return response()->json(['status' => 0], 404);
-            }
-
-            $product = Product::with('trans')->find($request->id);
-
-            if ($product->finished) {
-                return response()->json(['status' => false], 200);
-            }
-
-            if ($user->hasFavorited($product)) {
-
-                return response()->json(['status' => 0], 200);
-            } else {
-                $user->favorite($product);
-
-                return response()->json(['status' => 1], 200);
-            }
-        } else {
-            return response()->json(['status' => 0]);
+        if (!$productId) {
+            return response()->json(['status' => 0], 404);
         }
+
+        $product = Product::find($productId);
+
+        if (!$product || $product->finished) {
+            return response()->json(['status' => 0], 200);
+        }
+
+        $wishlist = new WishlistService;
+
+        if ($wishlist->has($productId)) {
+            return response()->json(['status' => 0], 200);
+        }
+
+        $wishlist->add($productId);
+
+        return response()->json(['status' => 1], 200);
     }
 
     public function removeFromWishlist(Request $request)
     {
-        if (Auth::check()) {
-            $user = Auth::user();
+        $productId = (int) $request->id;
 
-            if (!$request->id) {
-                return response()->json(['status' => 0], 404);
-            }
-
-            $product = Product::with('trans')->find($request->id);
-
-            if (!$product) {
-                return response()->json(['status' => 0], 404);
-            }
-
-            if ($user->hasFavorited($product)) {
-
-                $user->unfavorite($product);
-
-                return response()->json(['status' => 1], 200);
-            }
+        if (!$productId) {
+            return response()->json(['status' => 0], 404);
         }
+
+        (new WishlistService)->remove($productId);
+
+        return response()->json(['status' => 1], 200);
     }
 
     public function removeFromCart(Request $request)
@@ -121,9 +108,9 @@ class ProfileController extends Controller
 
     public function wishlist()
     {
-        $user = auth()->user();
+        $ids = (new WishlistService)->ids();
 
-        $this->data['wishlists'] = $user->getFavoriteItems(Product::class)->get();
+        $this->data['wishlists'] = Product::with('trans')->whereIn('id', $ids)->get();
 
         return view('client.profile.wishlist', $this->data);
     }
