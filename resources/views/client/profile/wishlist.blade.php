@@ -27,26 +27,18 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th class="product_remove">#</th>
                                             <th class="product-thumbnail">{{ trans('Image') }}</th>
                                             <th class="cart-product-name">{{ trans('Product') }}</th>
                                             <th class="product-price">{{ trans('Unit Price') }}</th>
-                                            <th class="product-stock-status">{{ trans('Stock Status') }}</th>
                                             @if (false)
                                                 <th class="cart_btn">{{ trans('Add to cart') }}</th>
                                             @endif
+                                            <th class="product_remove">#</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse($wishlists as $wishlist)
                                         <tr class="wishlist-items">
-                                            <td class="product_remove">
-                                                <a href="#" class="remove-from-wishlist" data-id="{{ $wishlist->id }}">
-                                                    <i class="pe-7s-close" data-tippy="{{ trans('Remove') }}" data-tippy-inertia="true"
-                                                        data-tippy-animation="shift-away" data-tippy-delay="50"
-                                                        data-tippy-arrow="true" data-tippy-theme="sharpborder"></i>
-                                                </a>
-                                            </td>
                                             <td class="product-thumbnail">
                                                 <a href="{{ route('clientProductsInner', $wishlist->slug ?? $wishlist->id . '-' . \Illuminate\Support\Str::slug($wishlist->trans->title, '-', false)) }}">
                                                     <img src="{{ $wishlist->image }}"
@@ -55,10 +47,16 @@
                                             </td>
                                             <td class="product-name"><a href="{{ route('clientProductsInner', $wishlist->slug ?? $wishlist->id . '-' . \Illuminate\Support\Str::slug($wishlist->trans->title, '-', false)) }}">{{ $wishlist->trans->title }}</a></td>
                                             <td class="product-price"><span class="amount">{{ getPrice($wishlist->price) }} GEL</span></td>
-                                            <td class="product-stock-status"><span class="in-stock @if(!$wishlist->available) text-danger @endif">@if($wishlist->available) {{ trans('In stock') }} @else {{ trans('Out of Stock') }} @endif</span></td>
                                             @if (false)
                                                 <td class="cart_btn"><a href="#" class="add-to-cart-products" data-id="{{ $wishlist->id }}">{{ trans('Add to cart') }}</a></td>
                                             @endif
+                                            <td class="product_remove">
+                                                <a href="#" class="remove-from-wishlist" data-id="{{ $wishlist->id }}">
+                                                    <i class="pe-7s-close" data-tippy="{{ trans('Remove') }}" data-tippy-inertia="true"
+                                                        data-tippy-animation="shift-away" data-tippy-delay="50"
+                                                        data-tippy-arrow="true" data-tippy-theme="sharpborder"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                         @empty
                                         @endforelse

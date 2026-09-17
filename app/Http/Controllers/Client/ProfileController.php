@@ -35,12 +35,12 @@ class ProfileController extends Controller
         $wishlist = new WishlistService;
 
         if ($wishlist->has($productId)) {
-            return response()->json(['status' => 0, 'reason' => 'already_added'], 200);
+            return response()->json(['status' => 0, 'reason' => 'already_added', 'count' => count($wishlist->ids())], 200);
         }
 
-        $wishlist->add($productId);
+        $ids = $wishlist->add($productId);
 
-        return response()->json(['status' => 1], 200);
+        return response()->json(['status' => 1, 'count' => count($ids)], 200);
     }
 
     public function removeFromWishlist(Request $request)
@@ -51,9 +51,9 @@ class ProfileController extends Controller
             return response()->json(['status' => 0], 404);
         }
 
-        (new WishlistService)->remove($productId);
+        $ids = (new WishlistService)->remove($productId);
 
-        return response()->json(['status' => 1], 200);
+        return response()->json(['status' => 1, 'count' => count($ids)], 200);
     }
 
     public function removeFromCart(Request $request)
