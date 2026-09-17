@@ -3530,6 +3530,10 @@ blockquote p {
 .single-product-thumbs:hover .thumbs-button-next {
   right: 0;
 }
+.single-product-thumbs .swiper-slide img {
+  height: 80px;
+  object-fit: cover;
+}
 
 /* ---Group quantity--- */
 .grouped-qty {
