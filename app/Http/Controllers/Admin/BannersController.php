@@ -78,7 +78,7 @@ class BannersController extends BaseController
         }
     }
 
-    protected $required_columns = ['image', 'title'];
+    protected $required_columns = ['image'];
 
     public function index()
     {
@@ -104,7 +104,7 @@ class BannersController extends BaseController
     public function store(Request $request)
     {
         $this->validate($request, [
-            'translates.'.$this->configuration->admin_lang.'.title' => 'required',
+            'translates.'.$this->configuration->admin_lang.'.title' => 'nullable',
             'image' => 'required|mimes:jpeg,jpg,png',
         ]);
 
@@ -150,7 +150,7 @@ class BannersController extends BaseController
         }
 
         $this->validate($request, [
-            'translates.'.$this->configuration->admin_lang.'.title' => 'required',
+            'translates.'.$this->configuration->admin_lang.'.title' => 'nullable',
             'image' => 'mimes:jpeg,jpg,png',
         ]);
 
