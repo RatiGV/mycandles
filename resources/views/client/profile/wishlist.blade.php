@@ -46,7 +46,7 @@
                                                 </a>
                                             </td>
                                             <td class="product-name"><a href="{{ route('clientProductsInner', $wishlist->slug ?? $wishlist->id . '-' . \Illuminate\Support\Str::slug($wishlist->trans->title, '-', false)) }}">{{ $wishlist->trans->title }}</a></td>
-                                            <td class="product-price"><span class="amount">{{ getPrice($wishlist->price) }} GEL</span></td>
+                                            <td class="product-price">@if ($wishlist->price > 0)<span class="amount">{{ getPrice($wishlist->price) }} GEL</span>@endif</td>
                                             @if (false)
                                                 <td class="cart_btn"><a href="#" class="add-to-cart-products" data-id="{{ $wishlist->id }}">{{ trans('Add to cart') }}</a></td>
                                             @endif

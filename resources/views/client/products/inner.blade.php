@@ -73,9 +73,11 @@
                     <div class="col-lg-6 pt-5 pt-lg-0">
                         <div class="single-product-content">
                             <h2 class="title">{{ $product->trans->title }}</h2>
-                            <div class="price-box">
-                                <span class="new-price">GEL {{ getPrice($product->price) }}</span>
-                            </div>
+                            @if ($product->price > 0)
+                                <div class="price-box">
+                                    <span class="new-price">GEL {{ getPrice($product->price) }}</span>
+                                </div>
+                            @endif
                             <p class="short-desc">{{ $product->trans->short_description }}</p>
                             <ul class="quantity-with-btn">
                                 @if (false)
@@ -271,9 +273,11 @@
                                         <div class="product-content">
                                             <a class="product-name"
                                                 href="{{ route('clientProductsInner', $related->slug ?? $related->id . '-' . \Illuminate\Support\Str::slug($related->trans->title, '-', false)) }}">{{ $related->trans->title }}</a>
-                                            <div class="price-box pb-1">
-                                                <span class="new-price">{{ getPrice($related->price) }} GEL</span>
-                                            </div>
+                                            @if ($related->price > 0)
+                                                <div class="price-box pb-1">
+                                                    <span class="new-price">{{ getPrice($related->price) }} GEL</span>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 @endforeach
