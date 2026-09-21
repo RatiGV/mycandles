@@ -4833,7 +4833,23 @@ blockquote p {
 }
 .gallery-slide-img {
   width: 50%;
+  height: 100%;
   margin: 0 auto;
+  display: block;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.single-product-slider .swiper-slide .single-img {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .widgets-list-slider [class*=swiper-slide]:not(:last-child) {
   border-bottom: 1px solid #dee2e6;
