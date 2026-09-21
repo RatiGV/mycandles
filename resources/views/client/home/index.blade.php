@@ -148,9 +148,11 @@
                                                 <div class="product-content">
                                                     <a class="product-name"
                                                         href="{{ route('clientProductsInner', $product->slug ?? $product->id . '-' . \Illuminate\Support\Str::slug($product->trans->title, '-', false)) }}">{{ $product->trans->title }}</a>
-                                                    <div class="price-box pb-1">
-                                                        <span class="new-price">{{ getPrice($product->price) }} GEL</span>
-                                                    </div>
+                                                    @if ($product->price > 0)
+                                                        <div class="price-box pb-1">
+                                                            <span class="new-price">{{ getPrice($product->price) }} GEL</span>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
