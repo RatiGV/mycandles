@@ -77,11 +77,13 @@ class Banner extends Model
                         }
 
                         // თუ რომელიმე სათარგმნი ველი არ შეიყვანა აუცილებელი ენის გარდა რომელიმე სხვა ენაზე
-                        if (! $v) {
+                        if ($v) {
+                            $item_translate->$k = $v;
+                        } elseif (! empty($translates[self::get_required_lang()][$k])) {
                             // არაკრეფილის მნიშვნელობად ჩაჯდეს აუცილებელი ენის მნიშვნელობა
                             $item_translate->$k = $translates[self::get_required_lang()][$k];
                         } else {
-                            $item_translate->$k = $v;
+                            $item_translate->$k = '';
                         }
                     }
 
@@ -156,10 +158,12 @@ class Banner extends Model
                             continue;
                         }
 
-                        if (! $v) {
+                        if ($v) {
+                            $item_translate->$k = $v;
+                        } elseif (! empty($translates[self::get_required_lang()][$k])) {
                             $item_translate->$k = $translates[self::get_required_lang()][$k];
                         } else {
-                            $item_translate->$k = $v;
+                            $item_translate->$k = '';
                         }
                     }
 
