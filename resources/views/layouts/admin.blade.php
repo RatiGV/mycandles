@@ -93,7 +93,6 @@
                                     <ul class="nav child_menu">
                                         <li><a href="{{ route('Products') }}"> @lang('admin.routes.Products')</a></li>
                                         <li><a href="{{ route('ProductCategories') }}"> @lang('admin.categories')</a></li>
-                                        <li><a href="{{ route('Brands') }}"> @lang('admin.routes.Brands')</a></li>
                                     </ul>
                                 </li>
                                 {{-- <li>
