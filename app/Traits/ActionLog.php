@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\UserLog;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
@@ -53,5 +54,35 @@ trait ActionLog
         ];
 
         UserLog::create($data);
+    }
+
+    public static function uploadFile($request, $data)
+    {
+        $file = $request->file($data['column_name']);
+        $filename = mt_rand(10000, 99999) . time() . '.' . $file->getClientOriginalExtension();
+        $uploadPath = public_path('uploads/' . $data['upload_folder']);
+        if (! is_dir($uploadPath)) {
+            mkdir($uploadPath, 0755, true);
+        }
+        $file->move($uploadPath, $filename);
+        $data['item']->{$data['column_name']} = '/uploads/' . $data['upload_folder'] . '/' . $filename;
+        return true;
+    }
+
+    public static function uploadGalleryImage($request, $file, $item, $class_base_name, $gallery_table)
+    {
+        $filename = mt_rand(10000, 99999) . time() . '.' . $file->getClientOriginalExtension();
+        $uploadPath = public_path('uploads/' . $class_base_name . '/gallery');
+        if (! is_dir($uploadPath)) {
+            mkdir($uploadPath, 0755, true);
+        }
+        $file->move($uploadPath, $filename);
+        DB::table($gallery_table)->insert([
+            'parent_id' => $item->id,
+            'image' => '/uploads/' . $class_base_name . '/gallery/' . $filename,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        return true;
     }
 }
