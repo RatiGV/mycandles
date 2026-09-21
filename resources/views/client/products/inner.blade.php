@@ -78,6 +78,7 @@
                             </div>
                             <p class="short-desc">{{ $product->trans->short_description }}</p>
                             <ul class="quantity-with-btn">
+                                @if (false)
                                 <li class="quantity">
                                     <div class="cart-plus-minus">
                                         <input class="cart-plus-minus-box" value="1" type="text">
@@ -85,6 +86,7 @@
                                         <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
                                     </div>
                                 </li>
+                                @endif
                                 @if (false)
                                 <li class="add-to-cart">
                                     <a class="btn btn-custom-size lg-size btn-pronia-primary add-cart-product-inner"
@@ -135,6 +137,11 @@
                                             </li>
                                         @endforeach
                                     </ul>
+                                </div>
+                            @endif
+                            @if ($product->trans->description)
+                                <div class="product-description">
+                                    {!! $product->trans->description !!}
                                 </div>
                             @endif
                             <div class="product-category social-link align-items-center pb-0">
