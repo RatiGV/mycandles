@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="single-product-area section-space-top-100">
+        <div class="single-product-area section-space-y-axis-100">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
@@ -95,7 +95,7 @@
                                         href="#" data-id="{{ $product->id }}">{{ trans('Add to cart') }}</a>
                                 </li>
                                 @endif
-                                <li class="wishlist-btn-wrap">
+                                <li class="wishlist-btn-wrap mb-4">
                                     <a class="custom-circle-btn add-to-wishlist-product @if((new \App\Services\WishlistService())->has($product->id)) in-wishlist @endif" data-id="{{ $product->id }}"
                                         href="#">
                                         <i class="pe-7s-like"></i>
