@@ -92,7 +92,7 @@ class ProductController extends BaseController
         }
     }
 
-    protected $required_columns = ['code', 'title', 'description', 'price'];
+    protected $required_columns = ['title', 'description'];
 
     /**
      * Display a listing of the resource.
@@ -155,7 +155,7 @@ class ProductController extends BaseController
         $this->data['routes_suffix'] = $this->routes_suffix;
         $this->data['main_table'] = $this->main_table;
         $this->data['translates_table'] = $this->translates_table;
-        $this->data['categories'] = $this->categories_model::allItems(locale(),true,false);
+        $this->data['categories'] = $this->categories_model::allItems('ka', true, false);
 
         return view($this->views_folder . '.index', $this->data);
     }
@@ -166,7 +166,7 @@ class ProductController extends BaseController
         $this->data['main_columns'] = $this->main_columns();
         $this->data['translate_columns'] = $this->translate_columns();
         $this->data['required_columns'] = $this->required_columns;
-        $this->data['categories'] = $this->categories_model::allItems(locale(),true,false);
+        $this->data['categories'] = $this->categories_model::allItems('ka', true, false);
 
         return view($this->views_folder . '.add', $this->data);
     }
@@ -177,9 +177,9 @@ class ProductController extends BaseController
             'translates.' . $this->configuration->admin_lang . '.title' => 'required',
             'translates.' . $this->configuration->admin_lang . '.description' => 'required',
             'category_id' => 'nullable|array',
-            'price' => 'required|numeric|min:1',
+            'price' => 'nullable|numeric|min:0',
             'image' => 'mimes:jpeg,jpg,png',
-            'code' => 'required|string|unique:products,code',
+            'code' => 'nullable|string|unique:products,code',
         ]);
 
         $insert = $this->model->addItem($request);
@@ -213,7 +213,7 @@ class ProductController extends BaseController
         $this->data['model'] = $this->model;
         $this->data['main_table'] = $this->main_table;
         $this->data['image_gallery_table'] = $this->image_gallery_table;
-        $this->data['categories'] = $this->categories_model::allItems(locale(),true,false);
+        $this->data['categories'] = $this->categories_model::allItems('ka', true, false);
 
         return view($this->views_folder . '.edit', $this->data);
     }
@@ -230,9 +230,9 @@ class ProductController extends BaseController
             'translates.' . $this->configuration->admin_lang . '.title' => 'required',
             'translates.' . $this->configuration->admin_lang . '.description' => 'required',
             'category_id' => 'nullable|array',
-            'price' => 'required|numeric|min:0.01',
+            'price' => 'nullable|numeric|min:0',
             'image' => 'mimes:jpeg,jpg,png',
-            'code' => 'string|unique:products,code,' . $item->id,
+            'code' => 'nullable|string|unique:products,code,' . $item->id,
         ]);
 
         $update = $this->model->updateItem($request, $item);

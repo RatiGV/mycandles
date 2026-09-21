@@ -147,8 +147,12 @@
                                     @empty
                                     @endforelse
                                     <td class="">
-                                        @if ($item->category_id)
-                                            <a href="{{ route('EditProductCategories', $item->category_id) }}"
+                                        @php
+                                            $item_cat_ids = json_decode($item->category_id ?: '[]');
+                                            $item_cat_id = $item_cat_ids[0] ?? null;
+                                        @endphp
+                                        @if ($item_cat_id)
+                                            <a href="{{ route('EditProductCategories', $item_cat_id) }}"
                                                 target="_blank" style="color: orange;">
                                                 {{ $item->cat_title }}
                                             </a>

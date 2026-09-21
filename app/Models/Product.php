@@ -105,6 +105,9 @@ class Product extends Model
             }
         }
 
+        $item->price = $request->price !== null && $request->price !== '' ? $request->price : 0;
+        $item->code = $request->code !== null && $request->code !== '' ? $request->code : null;
+
         if ($request->hasFile('image')) {
             $data = [];
             $data['main_table'] = self::$main_table;
@@ -197,6 +200,9 @@ class Product extends Model
             }
         }
 
+        $item->price = $request->price !== null && $request->price !== '' ? $request->price : 0;
+        $item->code = $request->code !== null && $request->code !== '' ? $request->code : null;
+
         if ($request->hasFile('image')) {
             /*
             * როდესაც public_html საქაღალდეში მხოლოდ საჯარო ფაილებია,
@@ -271,7 +277,10 @@ class Product extends Model
     {
         if (property_exists(__CLASS__, 'translates_table')) {
             return self::$current_class::join(self::$translates_table, self::$main_table . '.id', '=', self::$translates_table . '.parent_id')
-                ->leftjoin('product_category_translates AS pct', self::$main_table . '.category_id', 'pct.parent_id')
+                ->leftjoin('product_category_translates AS pct', function ($join) {
+                    $join->on(DB::raw("JSON_UNQUOTE(JSON_EXTRACT(REPLACE(" . self::$main_table . ".category_id, ' ', ''), '$[0]'))"), '=', 'pct.parent_id')
+                        ->where('pct.lang', '=', 'ka');
+                })
                 ->where(self::$main_table . '.id', $id)
                 ->where(self::$translates_table . '.lang', $local)
                 ->select(
@@ -296,10 +305,9 @@ class Product extends Model
     public static function allItems($local = '', $status_on = false, $where_in = false, $where_in_cat = false, $paginate = false, $get = false)
     {
         return self::$current_class::join(self::$translates_table, self::$main_table . '.id', self::$translates_table . '.parent_id')
-            ->leftjoin('product_category_translates AS pct', self::$main_table . '.category_id', 'pct.parent_id')
-            ->where(function ($query) use ($local) {
-                $query->where('pct.lang', $local)
-                    ->orWhere('pct.lang', '=', null);
+            ->leftjoin('product_category_translates AS pct', function ($join) {
+                $join->on(DB::raw("JSON_UNQUOTE(JSON_EXTRACT(REPLACE(" . self::$main_table . ".category_id, ' ', ''), '$[0]'))"), '=', 'pct.parent_id')
+                    ->where('pct.lang', '=', 'ka');
             })
             ->where(self::$translates_table . '.lang', $local)
             ->select(
