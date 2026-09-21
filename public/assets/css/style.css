@@ -4823,12 +4823,17 @@ blockquote p {
   color: #6a6a6a;
   display: block;
 }
-.widgets-category li a:hover {
+.widgets-category li a:hover,
+.widgets-category li a.active {
   color: #abd373;
 }
 .widgets-category li i {
   vertical-align: middle;
   font-size: 10px;
+}
+.gallery-slide-img {
+  width: 50%;
+  margin: 0 auto;
 }
 .widgets-list-slider [class*=swiper-slide]:not(:last-child) {
   border-bottom: 1px solid #dee2e6;
