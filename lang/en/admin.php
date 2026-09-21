@@ -33,6 +33,7 @@ return [
     'answer' => 'Answer',
     'export' => 'Export',
     'new_product' => 'New product',
+    'top_product' => 'Top product',
     'send' => 'Send',
     'import' => 'Import',
     'upload' => 'Upload',

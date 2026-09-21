@@ -132,6 +132,14 @@
                                                         {{ $item->new_product ? 'checked' : '' }} class="js-switch change" />
                                                 </div>
                                             </td>
+                                        @elseif($listing_column === 'top_product')
+                                            <td>
+                                                <div class="iradio">
+                                                    <input type="checkbox" data-id="{{ $item->id }}"
+                                                        data-table="{{ $main_table }}" data-column="top_product"
+                                                        {{ $item->top_product ? 'checked' : '' }} class="js-switch change" />
+                                                </div>
+                                            </td>
                                         @elseif($listing_column === 'image')
                                             <td>
                                                 <div style="width: 50px;height: 50px; overflow: hidden;">

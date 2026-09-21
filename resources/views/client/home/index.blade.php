@@ -257,7 +257,7 @@
     @endif
     @if ($partners->isNotEmpty())
         <!-- Begin Brand Area -->
-        <div class="brand-area section-space-bottom-100">
+        <div class="brand-area">
             <div class="container">
                 <div class="brand-bg" data-bg-image="{{ asset('assets/images/brand/bg/1-1170x300.jpg') }}">
                     <div class="row">
