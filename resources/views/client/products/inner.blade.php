@@ -35,7 +35,7 @@
                                         @foreach ($product->images as $img)
                                             <div class="swiper-slide">
                                                 <a href="{{ $img->image }}" class="single-img gallery-popup">
-                                                    <img class="img-full" src="{{ $img->image }}" alt="Product Image">
+                                                    <img class="img-full gallery-slide-img" src="{{ $img->image }}" alt="Product Image">
                                                 </a>
                                             </div>
                                         @endforeach
@@ -52,7 +52,7 @@
                                         @if ($product->images->isNotEmpty())
                                             @foreach ($product->images as $img)
                                                 <a href="javascript:void(0);" class="swiper-slide">
-                                                    <img class="img-full" src="{{ $img->image }}" alt="Product Thumnail">
+                                                    <img class="img-full gallery-slide-img" src="{{ $img->image }}" alt="Product Thumnail">
                                                 </a>
                                             @endforeach
                                         @endif
@@ -102,31 +102,19 @@
                                     </a>
                                 </li>
                             </ul>
-                            @if ($benefits->isNotEmpty())
-                                <ul class="service-item-wrap">
-                                    @foreach ($benefits as $benefit)
-                                        <li class="service-item">
-                                            <div class="service-img">
-                                                <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}">
-                                            </div>
-                                            <div class="service-content">
-                                                <span class="title">{{ $benefit->title }}</span>
-                                            </div>
+                            @if ($product->code)
+                                <div class="product-category">
+                                    <span class="title">{{ trans('Product code') }}:</span>
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:void(0);">{{ $product->code }}</a>
                                         </li>
-                                    @endforeach
-                                </ul>
+                                    </ul>
+                                </div>
                             @endif
-                            <div class="product-category">
-                                <span class="title">{{ trans('Product code') }}:</span>
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0);">{{ $product->code }}</a>
-                                    </li>
-                                </ul>
-                            </div>
                             @if ($categories->isNotEmpty())
                                 <div class="product-category">
-                                    <span class="title">Categories :</span>
+                                    <span class="title">{{ trans('Categories') }}:</span>
                                     <ul>
                                         @foreach ($categories as $category)
                                             <li>
@@ -146,64 +134,20 @@
                                     {!! $product->trans->description !!}
                                 </div>
                             @endif
-                            <div class="product-category social-link align-items-center pb-0">
-                                <span class="title pe-3">Share:</span>
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0);" data-tippy="Pinterest" data-tippy-inertia="true"
-                                            data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                                            data-tippy-theme="sharpborder">
-                                            <i class="fa fa-pinterest-p"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" data-tippy="Twitter" data-tippy-inertia="true"
-                                            data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true"
-                                            data-tippy-theme="sharpborder">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" data-tippy="Tumblr" data-tippy-inertia="true"
-                                            data-tippy-animation="shift-away" data-tippy-delay="50"
-                                            data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                            <i class="fa fa-tumblr"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" data-tippy="Dribbble" data-tippy-inertia="true"
-                                            data-tippy-animation="shift-away" data-tippy-delay="50"
-                                            data-tippy-arrow="true" data-tippy-theme="sharpborder">
-                                            <i class="fa fa-dribbble"></i>
-                                        </a>
-                                    </li>
+                            @if ($benefits->isNotEmpty())
+                                <ul class="service-item-wrap">
+                                    @foreach ($benefits as $benefit)
+                                        <li class="service-item">
+                                            <div class="service-img">
+                                                <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}">
+                                            </div>
+                                            <div class="service-content">
+                                                <span class="title">{{ $benefit->title }}</span>
+                                            </div>
+                                        </li>
+                                    @endforeach
                                 </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="product-tab-area section-space-top-100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ul class="nav product-tab-nav tab-style-2 pt-0" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a class="active tab-btn" id="description-tab" data-bs-toggle="tab" href="#description"
-                                    role="tab" aria-controls="description" aria-selected="true">
-                                    {{ trans('Description') }}
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content product-tab-content">
-                            <div class="tab-pane fade show active" id="description" role="tabpanel"
-                                aria-labelledby="description-tab">
-                                <div class="product-description-body">
-                                    <p class="short-desc mb-0">{!! $product->trans->description !!}</p>
-
-                                </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -211,6 +155,7 @@
         </div>
 
         <!-- Begin Product Area -->
+        @if ($relateds->isNotEmpty())
         <div class="product-area section-space-y-axis-90">
             <div class="container">
                 <div class="row">
@@ -241,21 +186,6 @@
                                                             <i class="pe-7s-like"></i>
                                                         </a>
                                                     </li>
-                                                   <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
-                                                        <a href="#quickModal"
-                                                          class="quickview-btn"
-                                                           data-id="{{ $related->id }}"
-                                                           data-tippy="Quickview"
-                                                           data-tippy-inertia="true"
-                                                           data-tippy-animation="shift-away"
-                                                           data-tippy-delay="50"
-                                                           data-tippy-arrow="true"
-                                                           data-tippy-theme="sharpborder">
-                                                  <i class="pe-7s-look"></i>
-                                                        </a>
-                                                  </li>
-
-
                                                     @if (false)
                                                     <li>
                                                         <a href="#" class="add-to-cart-products"
@@ -287,6 +217,7 @@
                 </div>
             </div>
         </div>
+        @endif
         <!-- Product Area End Here -->
 
     </main>

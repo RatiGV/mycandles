@@ -64,7 +64,7 @@
                                          <h2 class="widgets-title mb-4">{{ trans('Categories') }}</h2>
                                          <ul class="widgets-category">
                                              <li>
-                                                 <a href="{{ route('clientProducts') }}">
+                                                 <a href="{{ route('clientProducts') }}" class="{{ request('category') ? '' : 'active' }}">
                                                      <i class="fa fa-chevron-right"></i>
                                                      {{ trans('All') }} <span>({{ \App\Models\Product::count() }})</span>
                                                  </a>
@@ -72,7 +72,8 @@
                                              @forelse($categories as $countCategories)
                                                  <li>
                                                      <a
-                                                         href="{{ route('clientProducts') }}?category={{ $countCategories->trans->title }}&search={{ request()->get('search') }}&sort={{ request()->get('sort') }}&priceRange={{ request()->get('priceRange') }}">
+                                                         href="{{ route('clientProducts') }}?category={{ $countCategories->trans->title }}&search={{ request()->get('search') }}&sort={{ request()->get('sort') }}&priceRange={{ request()->get('priceRange') }}"
+                                                         class="{{ request('category') === $countCategories->trans->title ? 'active' : '' }}">
                                                          <i class="fa fa-chevron-right"></i>
                                                          {{ $countCategories->trans->title }}
                                                          <span>({{ $countCategories->products_count }})</span>
@@ -154,29 +155,6 @@
                                                                          <i class="pe-7s-like"></i>
                                                                      </a>
                                                                  </li>
-                                                                 <!--მარიამი ----------------------------------------------->
-
-
-                                                                        <li>
-                                                                            <a href="#quickModal"
-                                                                            class="quickview-btn"
-                                                                            data-id="{{ $product->id }}"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#quickModal"
-                                                                            data-tippy="Quickview"
-                                                                            data-tippy-inertia="true"
-                                                                            data-tippy-animation="shift-away"
-                                                                            data-tippy-delay="50"
-                                                                            data-tippy-arrow="true"
-                                                                            data-tippy-theme="sharpborder">
-                                                                                <i class="pe-7s-look"></i>
-                                                                            </a>
-                                                                        </li>
-
-                                                                                                                        
-
-
-
                                                                  @if (false)
                                                                  <li>
                                                                      <a href="#" class="add-to-cart-products"
@@ -248,30 +226,6 @@
                                                                          <i class="pe-7s-like"></i>
                                                                      </a>
                                                                  </li>
-
-                                                                 <!-- მარიამი ----------------------->
-                                                                 <li>
-                                                                        <a href="#quickModal"
-                                                                        class="quickview-btn"
-                                                                        data-id="{{ $product->id }}"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#quickModal"
-                                                                        data-tippy="Quickview"
-                                                                        data-tippy-inertia="true"
-                                                                        data-tippy-animation="shift-away"
-                                                                        data-tippy-delay="50"
-                                                                        data-tippy-arrow="true"
-                                                                        data-tippy-theme="sharpborder">
-                                                                            <i class="pe-7s-look"></i>
-                                                                        </a>
-                                                                    </li>
-
-
-
-
-
-
-
                                                                  @if (false)
                                                                  <li>
                                                                      <a href="#" class="add-to-cart-products"

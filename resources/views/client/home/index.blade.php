@@ -111,25 +111,7 @@
                                                                     data-tippy-arrow="true" data-id="{{ $product->id }}" data-tippy-theme="sharpborder">
                                                                     <i class="pe-7s-like"></i>
                                                                 </a>
-                                                           <li>
-    <a href="#quickModal"
-       class="quickview-btn"
-       data-id="{{ $product->id }}"
-       data-bs-toggle="modal"
-       data-bs-target="#quickModal"
-       data-tippy="Quickview"
-       data-tippy-inertia="true"
-       data-tippy-animation="shift-away"
-       data-tippy-delay="50"
-       data-tippy-arrow="true"
-       data-tippy-theme="sharpborder">
-        <i class="pe-7s-look"></i>
-    </a>
-</li>
-
-
-
-
+                                                            </li>
 
                                                             @if (false)
                                                             <li>
