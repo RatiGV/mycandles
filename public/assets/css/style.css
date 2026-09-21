@@ -3029,9 +3029,11 @@ blockquote p {
 }
 .product-img {
   position: relative;
+  text-align: center;
 }
 .product-img img {
-  width: 100%;
+  max-height: 182px;
+  width: auto;
 }
 .product-img img.secondary-img {
   position: absolute;
@@ -3041,7 +3043,8 @@ blockquote p {
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
-  width: 100%;
+  max-height: 182px;
+  width: auto;
 }
 .product-content {
   padding-top: 10px;

@@ -18,13 +18,4 @@
         </div>
     </a>
 </div>
-<div class="col-md-3">
-    <a href=" {{ route('Brands') }}">
-        <div class="card-counter info">
-            <i class="fa fa-tag"></i>
-            <span class="count-numbers">{{ DB::table('brands')->count() }}</span>
-            <span class="count-name">@lang('admin.routes.Brands')</span>
-        </div>
-    </a>
-</div>
 @endsection
