@@ -56,6 +56,8 @@ use App\Http\Controllers\Client\ProductController as ClientProductController;
 // Route::get('/api', [IndexController::class, 'index']);
 
 
+Route::get('/sitemap.xml', [\App\Http\Controllers\Client\SitemapController::class, 'index'])->name('sitemap');
+
 Route::post('/ajax-add-cart', [ProfileController::class, 'addToCart']);
 Route::post('/ajax-remove-cart', [ProfileController::class, 'removeFromCart']);
 

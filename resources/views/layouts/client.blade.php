@@ -17,11 +17,56 @@
 
     <meta name="author" content="Smart Web" />
 
+    <link rel="canonical" href="{{ url()->current() }}" />
+    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+        <link rel="alternate" hreflang="{{ $localeCode }}"
+            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" />
+    @endforeach
+    <link rel="alternate" hreflang="x-default"
+        href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getDefaultLocale(), null, [], true) }}" />
+
     <meta property="og:url" content="{{ url()->current() }}" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ $info->translate->slogan }}" />
+    <meta property="og:locale" content="{{ locale() }}" />
     <meta property="og:title" content="@include('layouts.meta-title')" />
     <meta property="og:description" content="@include('layouts.meta-description')" />
     <meta property="og:image" content="{{ $metaImage ? url($metaImage) : '' }}" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="@include('layouts.meta-title')" />
+    <meta name="twitter:description" content="@include('layouts.meta-description')" />
+    <meta name="twitter:image" content="{{ $metaImage ? url($metaImage) : '' }}" />
+
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'Organization',
+            'name' => $info->translate->slogan,
+            'url' => url('/'),
+            'logo' => $info->logo,
+            'contactPoint' => array_filter([
+                '@type' => 'ContactPoint',
+                'telephone' => $info->phone,
+                'contactType' => 'customer service',
+            ]),
+            'sameAs' => array_values(array_filter([$info->facebook, $info->twitter])),
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'WebSite',
+            'name' => $info->translate->slogan,
+            'url' => url('/'),
+            'potentialAction' => [
+                '@type' => 'SearchAction',
+                'target' => url('/products') . '?search={search_term_string}',
+                'query-input' => 'required name=search_term_string',
+            ],
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+    @stack('schema')
 
     <!-- CSS
     ============================================ -->
@@ -130,7 +175,7 @@
                                     <ul>
                                         <li>
                                             <a href="#exampleModal" class="search-btn bt" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
+                                                data-bs-target="#exampleModal" title="Search Product" aria-label="Search Product">
                                                 <i class="pe-7s-search"></i>
                                             </a>
                                         </li>
@@ -268,7 +313,7 @@
                                     <ul>
                                         <li>
                                             <a href="#exampleModal" class="search-btn bt" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
+                                                data-bs-target="#exampleModal" title="Search Product" aria-label="Search Product">
                                                 <i class="pe-7s-search"></i>
                                             </a>
                                         </li>

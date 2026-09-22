@@ -1,4 +1,51 @@
 @extends('layouts.client')
+
+@push('schema')
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'Product',
+            'name' => $product->trans->title,
+            'description' => $product->trans->short_description ?: $product->trans->title,
+            'image' => array_values(array_filter(array_merge([$product->image], $product->images->pluck('image')->toArray()))),
+            'sku' => $product->code,
+            'offers' => [
+                '@type' => 'Offer',
+                'url' => url()->current(),
+                'priceCurrency' => 'GEL',
+                'price' => (string) $product->price,
+                'availability' => $product->available ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+            ],
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                [
+                    '@type' => 'ListItem',
+                    'position' => 1,
+                    'name' => trans('Home'),
+                    'item' => route('clientHome'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 2,
+                    'name' => trans('Shop'),
+                    'item' => route('clientProducts'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 3,
+                    'name' => $product->trans->title,
+                    'item' => url()->current(),
+                ],
+            ],
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+@endpush
+
 @section('content')
     <main class="main-content">
         <div class="breadcrumb-area breadcrumb-height" data-bg-image="{{ $info->top_banner }}">
