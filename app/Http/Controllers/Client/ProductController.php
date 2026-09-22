@@ -45,7 +45,7 @@ class ProductController extends Controller
             }, function ($q) {
                 $q->orderBy('created_at', 'desc');
             })
-            ->paginate(12);
+            ->paginate(24);
 
         $this->data['categories'] = ProductCategory::query()
             ->with('trans')

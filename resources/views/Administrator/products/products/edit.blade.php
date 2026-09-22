@@ -95,20 +95,6 @@
                                                             id="short_description_{{ $lang['prefix'] }}">{{ $item_info->description }}</textarea>
                                                     </div>
                                                 </div>
-                                            @elseif($translate_column === 'meta_description')
-                                                <div
-                                                    class="form-group not-need {{ $errors->has('translates.' . $lang['prefix'] . '.meta_description') ? 'bad' : '' }}">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                                        @lang('admin.' . $translate_column)
-                                                        @if (in_array($translate_column, $required_columns))
-                                                            <span class="required">*</span>
-                                                        @endif
-                                                    </label>
-                                                    <div class="col-md-7 col-sm-7 col-xs-12">
-                                                        <textarea name="translates[{{ $lang['prefix'] }}][meta_description]" class="form-control col-md-7 col-xs-12"
-                                                            rows="5">{{ $item_info->meta_description }}</textarea>
-                                                    </div>
-                                                </div>
                                             @else
                                                 <div
                                                     class="form-group {{ $errors->has('translates.' . $lang['prefix'] . '.' . $translate_column) ? 'bad' : '' }}">
@@ -116,10 +102,6 @@
                                                         @lang('admin.' . $translate_column)
                                                         @if (in_array($translate_column, $required_columns))
                                                             <span class="required">*</span>
-                                                        @endif
-                                                        @if ($translate_column == 'meta_title')
-                                                            <i class="fas fa-question-circle" data-toggle="modal"
-                                                                data-target="#mt-modal" style="cursor: pointer"></i>
                                                         @endif
                                                     </label>
                                                     <div class="col-md-7 col-sm-7 col-xs-12">
@@ -141,7 +123,11 @@
                             @forelse($main_columns as $main_column)
                                 <div class="form-group {{ $errors->has($main_column) ? 'bad' : '' }}">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                        @lang('admin.' . $main_column)
+                                        @if ($main_column === 'slug')
+                                            @lang('admin.product_slug')
+                                        @else
+                                            @lang('admin.' . $main_column)
+                                        @endif
                                         @if (in_array($main_column, $required_columns))
                                             <span class="required">*</span>
                                         @endif
@@ -275,6 +261,15 @@
                                 <div class="col-md-7 col-sm-7 col-xs-12">
                                     <input type="checkbox" class="flat" name="status"
                                         {{ $item->status ? 'checked' : '' }} />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    @lang('admin.top_product')
+                                </label>
+                                <div class="col-md-7 col-sm-7 col-xs-12">
+                                    <input type="checkbox" class="flat" name="top_product"
+                                        {{ $item->top_product ? 'checked' : '' }} />
                                 </div>
                             </div>
                             <div class="ln_solid"></div>

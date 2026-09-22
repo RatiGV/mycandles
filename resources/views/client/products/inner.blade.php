@@ -1,4 +1,51 @@
 @extends('layouts.client')
+
+@push('schema')
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'Product',
+            'name' => $product->trans->title,
+            'description' => $product->trans->short_description ?: $product->trans->title,
+            'image' => array_values(array_filter(array_merge([$product->image], $product->images->pluck('image')->toArray()))),
+            'sku' => $product->code,
+            'offers' => [
+                '@type' => 'Offer',
+                'url' => url()->current(),
+                'priceCurrency' => 'GEL',
+                'price' => (string) $product->price,
+                'availability' => $product->available ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+            ],
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+    <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                [
+                    '@type' => 'ListItem',
+                    'position' => 1,
+                    'name' => trans('Home'),
+                    'item' => route('clientHome'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 2,
+                    'name' => trans('Shop'),
+                    'item' => route('clientProducts'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 3,
+                    'name' => $product->trans->title,
+                    'item' => url()->current(),
+                ],
+            ],
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+@endpush
+
 @section('content')
     <main class="main-content">
         <div class="breadcrumb-area breadcrumb-height" data-bg-image="{{ $info->top_banner }}">
@@ -28,14 +75,14 @@
                                     <div class="swiper-slide">
                                         <a href="{{ $product->image }}" class="single-img gallery-popup">
                                             <img class="img-full" src="{{ $product->image }}"
-                                                alt="{{ $product->trans->alt }}">
+                                                alt="{{ $product->trans->alt }}" fetchpriority="high">
                                         </a>
                                     </div>
                                     @if ($product->images->isNotEmpty())
                                         @foreach ($product->images as $img)
                                             <div class="swiper-slide">
                                                 <a href="{{ $img->image }}" class="single-img gallery-popup">
-                                                    <img class="img-full gallery-slide-img" src="{{ $img->image }}" alt="Product Image">
+                                                    <img class="img-full gallery-slide-img" src="{{ $img->image }}" alt="Product Image" loading="lazy" decoding="async">
                                                 </a>
                                             </div>
                                         @endforeach
@@ -52,7 +99,7 @@
                                         @if ($product->images->isNotEmpty())
                                             @foreach ($product->images as $img)
                                                 <a href="javascript:void(0);" class="swiper-slide">
-                                                    <img class="img-full gallery-slide-img" src="{{ $img->image }}" alt="Product Thumnail">
+                                                    <img class="img-full gallery-slide-img" src="{{ $img->image }}" alt="Product Thumnail" loading="lazy" decoding="async">
                                                 </a>
                                             @endforeach
                                         @endif
@@ -134,25 +181,37 @@
                                     {!! $product->trans->description !!}
                                 </div>
                             @endif
-                            @if ($benefits->isNotEmpty())
-                                <ul class="service-item-wrap">
-                                    @foreach ($benefits as $benefit)
-                                        <li class="service-item">
-                                            <div class="service-img">
-                                                <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}">
-                                            </div>
-                                            <div class="service-content">
-                                                <span class="title">{{ $benefit->title }}</span>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        @if ($benefits->isNotEmpty())
+            <!-- Begin Shipping Area -->
+            <div class="shipping-area">
+                <div class="container">
+                    <div class="shipping-bg">
+                        <div class="row shipping-wrap">
+                            @foreach ($benefits as $benefit)
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="shipping-item">
+                                        <div class="shipping-img">
+                                            <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}" loading="lazy" decoding="async">
+                                        </div>
+                                        <div class="shipping-content">
+                                            <h2 class="title">{{ $benefit->title }}</h2>
+                                            <p class="short-desc mb-0">{{ $benefit->short_description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Shipping Area End Here -->
+        @endif
 
         <!-- Begin Product Area -->
         @if ($relateds->isNotEmpty())
@@ -173,7 +232,7 @@
                                             <a
                                                 href="{{ route('clientProductsInner', $related->slug ?? $related->id . '-' . \Illuminate\Support\Str::slug($related->trans->title, '-', false)) }}">
                                                 <img class="primary-img" src="{{ $related->image }}"
-                                                    alt="{{ $related->trans->alt }}">
+                                                    alt="{{ $related->trans->alt }}" loading="lazy" decoding="async">
                                             </a>
                                             <div class="product-add-action">
                                                 <ul>

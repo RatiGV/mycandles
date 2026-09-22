@@ -42,6 +42,7 @@ class MetaComposer
                         })->firstOrFail();
 
                     $metaTitle = ProductsTranslate::where('parent_id', $product->id)->where('lang', locale())->first();
+                    $metaImage = $product->image;
                     break;
                 default:
                     break;
@@ -58,5 +59,7 @@ class MetaComposer
         if (isset($metaTitle)) {
             $view->with('metaTitle', $metaTitle);
         }
+
+        $view->with('metaImage', $metaImage ?? '');
     }
 }

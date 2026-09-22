@@ -80,11 +80,13 @@ class Product extends Model
             'slug',
             'new_product',
             'available',
+            'top_product',
         ]);
 
         $item->status = $request->status === 'on' ? 1 : 0;
         $item->available = $request->available === 'on' ? 1 : 0;
         $item->new_product = $request->new_product === 'on' ? 1 : 0;
+        $item->top_product = $request->top_product === 'on' ? 1 : 0;
 
         $item->category_id = $request->category_id ? json_encode($request->category_id) : '[]';
         
@@ -150,6 +152,18 @@ class Product extends Model
                         }
                     }
 
+                    if (in_array('alt', $translates_table_columns)) {
+                        $item_translate->alt = $item_translate->title;
+                    }
+
+                    if (in_array('meta_title', $translates_table_columns)) {
+                        $item_translate->meta_title = $item_translate->title;
+                    }
+
+                    if (in_array('meta_description', $translates_table_columns)) {
+                        $item_translate->meta_description = shorten(strip_tags($item_translate->description), 160);
+                    }
+
                     $item_translate->lang = $lang;
                     $item_translate->parent_id = $item->id;
                     $item_translate->save();
@@ -182,10 +196,12 @@ class Product extends Model
             'slug',
             'new_product',
             'available',
+            'top_product',
         ]);
         $item->status = $request->status === 'on' ? 1 : 0;
         $item->new_product = $request->new_product === 'on' ? 1 : 0;
         $item->available = $request->available === 'on' ? 1 : 0;
+        $item->top_product = $request->top_product === 'on' ? 1 : 0;
         $item->category_id = $request->category_id ? json_encode($request->category_id) : '[]';
 
         if ($request->slug) {
@@ -254,6 +270,18 @@ class Product extends Model
                         } else {
                             $item_translate->$k = $v;
                         }
+                    }
+
+                    if (in_array('alt', $translates_table_columns)) {
+                        $item_translate->alt = $item_translate->title;
+                    }
+
+                    if (in_array('meta_title', $translates_table_columns)) {
+                        $item_translate->meta_title = $item_translate->title;
+                    }
+
+                    if (in_array('meta_description', $translates_table_columns)) {
+                        $item_translate->meta_description = shorten(strip_tags($item_translate->description), 160);
                     }
 
                     $item_translate->update();
@@ -334,7 +362,7 @@ class Product extends Model
                 return $query->get();
             })
             ->when($paginate, function ($query, $paginate) {
-                return $query->paginate(12);
+                return $query->paginate(50);
             });
     }
 }

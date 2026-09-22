@@ -43,10 +43,19 @@
                                                 <div
                                                     class="form-group not-need {{ $errors->has('translates.' . $lang['prefix'] . '.short_description') ? 'bad' : '' }}">
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                                        @lang('admin.' . $translate_column) <span class="required">*</span>
+                                                        @lang('admin.' . $translate_column)
+                                                        @if (in_array($translate_column, $required_columns))
+                                                            <span class="required">*</span>
+                                                        @endif
                                                     </label>
                                                     <div class="col-md-7 col-sm-7 col-xs-12">
-                                                        <textarea name="translates[{{ $lang['prefix'] }}][short_description]" class="form-control col-md-7 col-xs-12">{{ old('translates.' . $lang['prefix'] . '.short_description') }}</textarea>
+                                                        @php
+                                                            $short_description_defaults = [
+                                                                'ka' => 'უმაღლესი ხარისხი',
+                                                                'en' => 'The Highest Quality',
+                                                            ];
+                                                        @endphp
+                                                        <textarea name="translates[{{ $lang['prefix'] }}][short_description]" class="form-control col-md-7 col-xs-12">{{ old('translates.' . $lang['prefix'] . '.short_description', $short_description_defaults[$lang['prefix']] ?? '') }}</textarea>
                                                     </div>
                                                 </div>
                                             @elseif($translate_column === 'description')
@@ -87,7 +96,11 @@
                                 @forelse($main_columns as $main_column)
                                     <div class="form-group {{ $errors->has($main_column) ? 'bad' : '' }}">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                            @lang('admin.' . $main_column)
+                                            @if ($main_column === 'slug')
+                                                @lang('admin.product_slug')
+                                            @else
+                                                @lang('admin.' . $main_column)
+                                            @endif
                                             @if (in_array($main_column, $required_columns))
                                                 <span class="required">*</span>
                                             @endif
@@ -170,7 +183,7 @@
                                         @lang('admin.available')
                                     </label>
                                     <div class="col-md-7 col-sm-7 col-xs-12">
-                                        <input type="checkbox" class="flat" name="available" />
+                                        <input type="checkbox" class="flat" name="available" checked />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -178,7 +191,15 @@
                                         @lang('admin.publish')
                                     </label>
                                     <div class="col-md-7 col-sm-7 col-xs-12">
-                                        <input type="checkbox" class="flat" name="status" />
+                                        <input type="checkbox" class="flat" name="status" checked />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        @lang('admin.top_product')
+                                    </label>
+                                    <div class="col-md-7 col-sm-7 col-xs-12">
+                                        <input type="checkbox" class="flat" name="top_product" checked />
                                     </div>
                                 </div>
                             </div>
