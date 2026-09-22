@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Models\News;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
@@ -17,7 +16,6 @@ class SitemapController extends Controller
         $staticRoutes = [
             'clientHome',
             'clientProducts',
-            'clientBlogs',
             'clientAbout',
             'clientFaq',
             'clientContact',
@@ -43,17 +41,6 @@ class SitemapController extends Controller
                     'lastmod' => optional($product->updated_at)->toAtomString(),
                     'changefreq' => 'weekly',
                     'priority' => '0.8',
-                ];
-            }
-
-            $blogs = News::where('status', 1)->get(['id', 'slug', 'updated_at']);
-
-            foreach ($blogs as $blog) {
-                $urls[] = [
-                    'loc' => LaravelLocalization::getLocalizedURL($locale, route('clientBlogsInner', $blog->slug ?: $blog->id, false)),
-                    'lastmod' => optional($blog->updated_at)->toAtomString(),
-                    'changefreq' => 'monthly',
-                    'priority' => '0.5',
                 ];
             }
         }
