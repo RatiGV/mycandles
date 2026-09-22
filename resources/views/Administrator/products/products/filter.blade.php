@@ -36,6 +36,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12">
                 @lang('admin.parent_category')
             </label>
+            <br>
             <div class="col-md-7 col-sm-7 col-xs-12">
                 <select name="field_id" class="chosen-select-deselect form-control">
                     <option value=""></option>
