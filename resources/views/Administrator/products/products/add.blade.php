@@ -183,7 +183,7 @@
                                         @lang('admin.available')
                                     </label>
                                     <div class="col-md-7 col-sm-7 col-xs-12">
-                                        <input type="checkbox" class="flat" name="available" />
+                                        <input type="checkbox" class="flat" name="available" checked />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -191,7 +191,15 @@
                                         @lang('admin.publish')
                                     </label>
                                     <div class="col-md-7 col-sm-7 col-xs-12">
-                                        <input type="checkbox" class="flat" name="status" />
+                                        <input type="checkbox" class="flat" name="status" checked />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        @lang('admin.top_product')
+                                    </label>
+                                    <div class="col-md-7 col-sm-7 col-xs-12">
+                                        <input type="checkbox" class="flat" name="top_product" checked />
                                     </div>
                                 </div>
                             </div>
