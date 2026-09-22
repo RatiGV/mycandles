@@ -134,23 +134,23 @@
                                     {!! $product->trans->description !!}
                                 </div>
                             @endif
-                            @if ($benefits->isNotEmpty())
-                                <ul class="service-item-wrap">
-                                    @foreach ($benefits as $benefit)
-                                        <li class="service-item">
-                                            <div class="service-img">
-                                                <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}">
-                                            </div>
-                                            <div class="service-content">
-                                                <span class="title">{{ $benefit->title }}</span>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @endif
                         </div>
                     </div>
                 </div>
+                @if ($benefits->isNotEmpty())
+                    <ul class="service-item-wrap">
+                        @foreach ($benefits as $benefit)
+                            <li class="service-item">
+                                <div class="service-img">
+                                    <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}">
+                                </div>
+                                <div class="service-content">
+                                    <span class="title">{{ $benefit->title }}</span>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
         </div>
 
