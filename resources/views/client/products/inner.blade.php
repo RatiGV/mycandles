@@ -142,7 +142,7 @@
 
         @if ($benefits->isNotEmpty())
             <!-- Begin Shipping Area -->
-            <div class="shipping-area section-space-top-100">
+            <div class="shipping-area">
                 <div class="container">
                     <div class="shipping-bg">
                         <div class="row shipping-wrap">
