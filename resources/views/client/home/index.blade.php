@@ -99,8 +99,6 @@
                                                         href="{{ route('clientProductsInner', $product->slug ?? $product->id . '-' . \Illuminate\Support\Str::slug($product->trans->title, '-', false)) }}">
                                                         <img class="primary-img" src="{{ $product->image }}"
                                                             alt="{{ $product->trans->alt }}">
-                                                        <img class="secondary-img" src="{{ $product->image }}"
-                                                            alt="{{ $product->trans->alt }}">
                                                     </a>
                                                     <div class="product-add-action">
                                                         <ul>
