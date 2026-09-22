@@ -75,14 +75,14 @@
                                     <div class="swiper-slide">
                                         <a href="{{ $product->image }}" class="single-img gallery-popup">
                                             <img class="img-full" src="{{ $product->image }}"
-                                                alt="{{ $product->trans->alt }}">
+                                                alt="{{ $product->trans->alt }}" fetchpriority="high">
                                         </a>
                                     </div>
                                     @if ($product->images->isNotEmpty())
                                         @foreach ($product->images as $img)
                                             <div class="swiper-slide">
                                                 <a href="{{ $img->image }}" class="single-img gallery-popup">
-                                                    <img class="img-full gallery-slide-img" src="{{ $img->image }}" alt="Product Image">
+                                                    <img class="img-full gallery-slide-img" src="{{ $img->image }}" alt="Product Image" loading="lazy" decoding="async">
                                                 </a>
                                             </div>
                                         @endforeach
@@ -99,7 +99,7 @@
                                         @if ($product->images->isNotEmpty())
                                             @foreach ($product->images as $img)
                                                 <a href="javascript:void(0);" class="swiper-slide">
-                                                    <img class="img-full gallery-slide-img" src="{{ $img->image }}" alt="Product Thumnail">
+                                                    <img class="img-full gallery-slide-img" src="{{ $img->image }}" alt="Product Thumnail" loading="lazy" decoding="async">
                                                 </a>
                                             @endforeach
                                         @endif
@@ -197,7 +197,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="shipping-item">
                                         <div class="shipping-img">
-                                            <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}">
+                                            <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}" loading="lazy" decoding="async">
                                         </div>
                                         <div class="shipping-content">
                                             <h2 class="title">{{ $benefit->title }}</h2>
@@ -232,7 +232,7 @@
                                             <a
                                                 href="{{ route('clientProductsInner', $related->slug ?? $related->id . '-' . \Illuminate\Support\Str::slug($related->trans->title, '-', false)) }}">
                                                 <img class="primary-img" src="{{ $related->image }}"
-                                                    alt="{{ $related->trans->alt }}">
+                                                    alt="{{ $related->trans->alt }}" loading="lazy" decoding="async">
                                             </a>
                                             <div class="product-add-action">
                                                 <ul>

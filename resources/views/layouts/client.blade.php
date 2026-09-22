@@ -72,18 +72,13 @@
     ============================================ -->
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/Pe-icon-7-stroke.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/ion.rangeSlider.min.css') }}" />
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/firago-font.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/wishlist-toast.css') }}">
+
+    <!-- Non-critical CSS (icon fonts, sliders, popups, toast, custom font) loaded async -->
+    <link rel="preload" href="{{ asset('assets/css/vendor-bundle.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('assets/css/vendor-bundle.css') }}"></noscript>
     @stack('css')
 
     <script>
@@ -633,7 +628,7 @@
                                         <a href="#" class="single-img quickview-link">
                                             <img class="img-full quickview-image"
                                                  src="{{ asset('assets/images/product/large-size/1-1-570x633.jpg') }}"
-                                                 alt="">
+                                                 alt="" loading="lazy" decoding="async">
                                         </a>
                                     </div>
                                 </div>

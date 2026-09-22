@@ -60,7 +60,7 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="shipping-item">
                                     <div class="shipping-img">
-                                        <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}">
+                                        <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}" loading="lazy" decoding="async">
                                     </div>
                                     <div class="shipping-content">
                                         <h2 class="title">{{ $benefit->title }}</h2>
@@ -98,7 +98,7 @@
                                                     <a
                                                         href="{{ route('clientProductsInner', $product->slug ?? $product->id . '-' . \Illuminate\Support\Str::slug($product->trans->title, '-', false)) }}">
                                                         <img class="primary-img" src="{{ $product->image }}"
-                                                            alt="{{ $product->trans->alt }}">
+                                                            alt="{{ $product->trans->alt }}" loading="lazy" decoding="async">
                                                     </a>
                                                     <div class="product-add-action">
                                                         <ul>
@@ -169,7 +169,7 @@
                         <div class="{{ $colClass }}">
                             <div class="banner-item img-hover-effect">
                                 <div class="banner-img">
-                                    <img src="{{ $banner->image }}" alt="{{ $banner->alt }}">
+                                    <img src="{{ $banner->image }}" alt="{{ $banner->alt }}" loading="lazy" decoding="async">
                                 </div>
                                 <div class="banner-content text-position-left">
                                     <h3 class="title">{{ $banner->title }}</h3>
@@ -230,7 +230,7 @@
                                                 <a
                                                     href="{{ route('clientBlogsInner', $blog->slug ?? $blog->id . '-' . \Illuminate\Support\Str::slug($blog->trans->title, '-', false)) }}">
                                                     <img class="img-full" src="{{ $blog->image }}"
-                                                        alt="{{ $blog->trans->alt }}">
+                                                        alt="{{ $blog->trans->alt }}" loading="lazy" decoding="async">
                                                 </a>
                                                 <div class="inner-btn-wrap">
                                                     <a class="inner-btn"

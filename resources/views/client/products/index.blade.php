@@ -140,7 +140,7 @@
                                                          <a
                                                              href="{{ route('clientProductsInner', $product->slug ?? $product->id . '-' . \Illuminate\Support\Str::slug($product->trans->title, '-', false)) }}">
                                                              <img class="primary-img" src="{{ $product->image }}"
-                                                                 alt="{{ $product->trans->alt }}">
+                                                                 alt="{{ $product->trans->alt }}" loading="lazy" decoding="async">
                                                          </a>
                                                          <div class="product-add-action">
                                                              <ul>
@@ -197,7 +197,7 @@
                                                          <a
                                                              href="{{ route('clientProductsInner', $product->slug ?? $product->id . '-' . \Illuminate\Support\Str::slug($product->trans->title, '-', false)) }}">
                                                              <img class="primary-img" src="{{ $product->image }}"
-                                                                 alt="{{ $product->trans->alt }}">
+                                                                 alt="{{ $product->trans->alt }}" loading="lazy" decoding="async">
                                                          </a>
                                                      </div>
                                                      <div class="product-content">
