@@ -152,7 +152,7 @@ class ProductController extends BaseController
             $this->data['items'] = $this->model::allItems($this->configuration->admin_lang, $status_on = false, $where_in, $where_in_cat = false, $paginate = true, $get = false);
         }
 
-        $this->data['listing_columns'] = ['sort', 'status', 'new_product', 'available', 'top_product', 'image', 'title', 'price'];
+        $this->data['listing_columns'] = ['sort', 'status', 'available', 'top_product', 'image', 'title', 'price'];
         $this->data['routes_suffix'] = $this->routes_suffix;
         $this->data['main_table'] = $this->main_table;
         $this->data['translates_table'] = $this->translates_table;
