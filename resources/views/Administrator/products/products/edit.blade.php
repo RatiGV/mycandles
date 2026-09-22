@@ -263,6 +263,15 @@
                                         {{ $item->status ? 'checked' : '' }} />
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    @lang('admin.top_product')
+                                </label>
+                                <div class="col-md-7 col-sm-7 col-xs-12">
+                                    <input type="checkbox" class="flat" name="top_product"
+                                        {{ $item->top_product ? 'checked' : '' }} />
+                                </div>
+                            </div>
                             <div class="ln_solid"></div>
                             <input type="hidden" name="stay" id="stay-input">
                             <div class="form-group">
