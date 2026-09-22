@@ -43,7 +43,10 @@
                                                 <div
                                                     class="form-group not-need {{ $errors->has('translates.' . $lang['prefix'] . '.short_description') ? 'bad' : '' }}">
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                                        @lang('admin.' . $translate_column) <span class="required">*</span>
+                                                        @lang('admin.' . $translate_column)
+                                                        @if (in_array($translate_column, $required_columns))
+                                                            <span class="required">*</span>
+                                                        @endif
                                                     </label>
                                                     <div class="col-md-7 col-sm-7 col-xs-12">
                                                         <textarea name="translates[{{ $lang['prefix'] }}][short_description]" class="form-control col-md-7 col-xs-12">{{ old('translates.' . $lang['prefix'] . '.short_description') }}</textarea>

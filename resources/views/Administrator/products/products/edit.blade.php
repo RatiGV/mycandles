@@ -95,20 +95,6 @@
                                                             id="short_description_{{ $lang['prefix'] }}">{{ $item_info->description }}</textarea>
                                                     </div>
                                                 </div>
-                                            @elseif($translate_column === 'meta_description')
-                                                <div
-                                                    class="form-group not-need {{ $errors->has('translates.' . $lang['prefix'] . '.meta_description') ? 'bad' : '' }}">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                                        @lang('admin.' . $translate_column)
-                                                        @if (in_array($translate_column, $required_columns))
-                                                            <span class="required">*</span>
-                                                        @endif
-                                                    </label>
-                                                    <div class="col-md-7 col-sm-7 col-xs-12">
-                                                        <textarea name="translates[{{ $lang['prefix'] }}][meta_description]" class="form-control col-md-7 col-xs-12"
-                                                            rows="5">{{ $item_info->meta_description }}</textarea>
-                                                    </div>
-                                                </div>
                                             @else
                                                 <div
                                                     class="form-group {{ $errors->has('translates.' . $lang['prefix'] . '.' . $translate_column) ? 'bad' : '' }}">

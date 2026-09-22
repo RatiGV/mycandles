@@ -137,24 +137,34 @@
                         </div>
                     </div>
                 </div>
-                @if ($benefits->isNotEmpty())
-                    <div class="single-product-content">
-                        <ul class="service-item-wrap">
-                            @foreach ($benefits as $benefit)
-                                <li class="service-item">
-                                    <div class="service-img">
-                                        <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}">
-                                    </div>
-                                    <div class="service-content">
-                                        <span class="title">{{ $benefit->title }}</span>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
             </div>
         </div>
+
+        @if ($benefits->isNotEmpty())
+            <!-- Begin Shipping Area -->
+            <div class="shipping-area section-space-top-100">
+                <div class="container">
+                    <div class="shipping-bg">
+                        <div class="row shipping-wrap">
+                            @foreach ($benefits as $benefit)
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="shipping-item">
+                                        <div class="shipping-img">
+                                            <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}">
+                                        </div>
+                                        <div class="shipping-content">
+                                            <h2 class="title">{{ $benefit->title }}</h2>
+                                            <p class="short-desc mb-0">{{ $benefit->short_description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Shipping Area End Here -->
+        @endif
 
         <!-- Begin Product Area -->
         @if ($relateds->isNotEmpty())

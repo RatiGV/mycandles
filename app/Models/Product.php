@@ -150,6 +150,14 @@ class Product extends Model
                         }
                     }
 
+                    if (in_array('alt', $translates_table_columns)) {
+                        $item_translate->alt = $item_translate->title;
+                    }
+
+                    if (in_array('meta_description', $translates_table_columns)) {
+                        $item_translate->meta_description = shorten(strip_tags($item_translate->description), 160);
+                    }
+
                     $item_translate->lang = $lang;
                     $item_translate->parent_id = $item->id;
                     $item_translate->save();
@@ -254,6 +262,14 @@ class Product extends Model
                         } else {
                             $item_translate->$k = $v;
                         }
+                    }
+
+                    if (in_array('alt', $translates_table_columns)) {
+                        $item_translate->alt = $item_translate->title;
+                    }
+
+                    if (in_array('meta_description', $translates_table_columns)) {
+                        $item_translate->meta_description = shorten(strip_tags($item_translate->description), 160);
                     }
 
                     $item_translate->update();

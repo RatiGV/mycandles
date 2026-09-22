@@ -83,6 +83,8 @@ class ProductController extends BaseController
                 'id',
                 'parent_id',
                 'lang',
+                'alt',
+                'meta_description',
                 'created_at',
                 'updated_at',
             ];
