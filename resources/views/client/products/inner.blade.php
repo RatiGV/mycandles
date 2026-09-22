@@ -138,18 +138,20 @@
                     </div>
                 </div>
                 @if ($benefits->isNotEmpty())
-                    <ul class="service-item-wrap">
-                        @foreach ($benefits as $benefit)
-                            <li class="service-item">
-                                <div class="service-img">
-                                    <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}">
-                                </div>
-                                <div class="service-content">
-                                    <span class="title">{{ $benefit->title }}</span>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
+                    <div class="single-product-content">
+                        <ul class="service-item-wrap">
+                            @foreach ($benefits as $benefit)
+                                <li class="service-item">
+                                    <div class="service-img">
+                                        <img src="{{ $benefit->image }}" alt="{{ $benefit->alt }}">
+                                    </div>
+                                    <div class="service-content">
+                                        <span class="title">{{ $benefit->title }}</span>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 @endif
             </div>
         </div>
