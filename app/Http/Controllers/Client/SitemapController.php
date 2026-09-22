@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Client;
 
 use App\Models\Product;
+use App\Models\ProductsTranslate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class SitemapController extends Controller
@@ -34,10 +36,13 @@ class SitemapController extends Controller
             }
 
             $products = Product::where('status', 1)->get(['id', 'slug', 'updated_at']);
+            $titles = ProductsTranslate::where('lang', $locale)->pluck('title', 'parent_id');
 
             foreach ($products as $product) {
+                $urlSlug = $product->slug ?: $product->id . '-' . Str::slug($titles[$product->id] ?? '', '-', false);
+
                 $urls[] = [
-                    'loc' => LaravelLocalization::getLocalizedURL($locale, route('clientProductsInner', $product->slug ?: $product->id, false)),
+                    'loc' => LaravelLocalization::getLocalizedURL($locale, route('clientProductsInner', $urlSlug, false)),
                     'lastmod' => optional($product->updated_at)->toAtomString(),
                     'changefreq' => 'weekly',
                     'priority' => '0.8',
