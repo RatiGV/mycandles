@@ -362,7 +362,7 @@ class Product extends Model
                 return $query->get();
             })
             ->when($paginate, function ($query, $paginate) {
-                return $query->paginate(12);
+                return $query->paginate(50);
             });
     }
 }
