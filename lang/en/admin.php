@@ -23,6 +23,7 @@ return [
     'choose_files' => 'Choose files',
     'choose' => 'Choose',
     'slug' => 'Slug',
+    'product_slug' => 'Product link (latin)',
     'remove_checkeds' => 'Remove checkeds',
     'status_checkeds' => 'Change status to checkeds',
     'check_all' => 'Check all',

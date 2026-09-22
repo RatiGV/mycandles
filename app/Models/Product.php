@@ -154,6 +154,10 @@ class Product extends Model
                         $item_translate->alt = $item_translate->title;
                     }
 
+                    if (in_array('meta_title', $translates_table_columns)) {
+                        $item_translate->meta_title = $item_translate->title;
+                    }
+
                     if (in_array('meta_description', $translates_table_columns)) {
                         $item_translate->meta_description = shorten(strip_tags($item_translate->description), 160);
                     }
@@ -266,6 +270,10 @@ class Product extends Model
 
                     if (in_array('alt', $translates_table_columns)) {
                         $item_translate->alt = $item_translate->title;
+                    }
+
+                    if (in_array('meta_title', $translates_table_columns)) {
+                        $item_translate->meta_title = $item_translate->title;
                     }
 
                     if (in_array('meta_description', $translates_table_columns)) {

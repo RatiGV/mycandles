@@ -90,7 +90,11 @@
                                 @forelse($main_columns as $main_column)
                                     <div class="form-group {{ $errors->has($main_column) ? 'bad' : '' }}">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                            @lang('admin.' . $main_column)
+                                            @if ($main_column === 'slug')
+                                                @lang('admin.product_slug')
+                                            @else
+                                                @lang('admin.' . $main_column)
+                                            @endif
                                             @if (in_array($main_column, $required_columns))
                                                 <span class="required">*</span>
                                             @endif

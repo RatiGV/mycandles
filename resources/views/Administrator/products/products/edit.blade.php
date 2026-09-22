@@ -103,10 +103,6 @@
                                                         @if (in_array($translate_column, $required_columns))
                                                             <span class="required">*</span>
                                                         @endif
-                                                        @if ($translate_column == 'meta_title')
-                                                            <i class="fas fa-question-circle" data-toggle="modal"
-                                                                data-target="#mt-modal" style="cursor: pointer"></i>
-                                                        @endif
                                                     </label>
                                                     <div class="col-md-7 col-sm-7 col-xs-12">
                                                         <input type="text"
@@ -127,7 +123,11 @@
                             @forelse($main_columns as $main_column)
                                 <div class="form-group {{ $errors->has($main_column) ? 'bad' : '' }}">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                        @lang('admin.' . $main_column)
+                                        @if ($main_column === 'slug')
+                                            @lang('admin.product_slug')
+                                        @else
+                                            @lang('admin.' . $main_column)
+                                        @endif
                                         @if (in_array($main_column, $required_columns))
                                             <span class="required">*</span>
                                         @endif

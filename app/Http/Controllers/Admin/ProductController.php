@@ -84,7 +84,9 @@ class ProductController extends BaseController
                 'parent_id',
                 'lang',
                 'alt',
+                'meta_title',
                 'meta_description',
+                'permalink',
                 'created_at',
                 'updated_at',
             ];
