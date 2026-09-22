@@ -16,16 +16,8 @@
                 <input type="hidden" name="check_childs_here" value="{{ $check_childs_here }}">
                 <div class="x_title">
                     <h2>@lang('admin.routes.' . $routes_suffix)</h2>
-                    @if (Request::getQueryString())
-                        <a href="{{ route($routes_suffix) }}" class="btn btn-danger btn-sm pull-right">
-                            <i class="fas fa-undo"></i> @lang('admin.cancel')
-                        </a>
-                    @endif
                     <a class="btn btn-success btn-sm pull-right" href="{{ route('Add' . $routes_suffix) }}">
                         <i class="fa fa-plus"></i> @lang('admin.add')
-                    </a>
-                    <a class="btn btn-success btn-sm pull-right" href="{{ route('Import' . $routes_suffix) }}">
-                        <i class="fa fa-file-excel"></i> @lang('admin.import')
                     </a>
                     @if ($items->count())
                         <a href="#!" class="btn btn-danger btn-sm pull-right multi-action-btn" data-action="1">
