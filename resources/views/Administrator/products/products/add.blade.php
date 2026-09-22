@@ -49,7 +49,13 @@
                                                         @endif
                                                     </label>
                                                     <div class="col-md-7 col-sm-7 col-xs-12">
-                                                        <textarea name="translates[{{ $lang['prefix'] }}][short_description]" class="form-control col-md-7 col-xs-12">{{ old('translates.' . $lang['prefix'] . '.short_description') }}</textarea>
+                                                        @php
+                                                            $short_description_defaults = [
+                                                                'ka' => 'უმაღლესი ხარისხი',
+                                                                'en' => 'The Highest Quality',
+                                                            ];
+                                                        @endphp
+                                                        <textarea name="translates[{{ $lang['prefix'] }}][short_description]" class="form-control col-md-7 col-xs-12">{{ old('translates.' . $lang['prefix'] . '.short_description', $short_description_defaults[$lang['prefix']] ?? '') }}</textarea>
                                                     </div>
                                                 </div>
                                             @elseif($translate_column === 'description')
