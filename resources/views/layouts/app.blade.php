@@ -19,7 +19,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="@include('layouts.meta-title')" />
     <meta property="og:description" content="@include('layouts.meta-description')" />
-    <meta property="og:image" content="{{ $metaImage ?? '' }}" />
+    <meta property="og:image" content="{{ !empty($metaImage) ? url($metaImage) : '' }}" />
 
     <!-- CSS
     ============================================ -->
