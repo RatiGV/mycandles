@@ -255,29 +255,4 @@
         </div>
         <!-- Blog Area End Here -->
     @endif
-    @if ($partners->isNotEmpty())
-        <!-- Begin Brand Area -->
-        <div class="brand-area">
-            <div class="container">
-                <div class="brand-bg" data-bg-image="{{ asset('assets/images/brand/bg/1-1170x300.jpg') }}">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="swiper-container brand-slider">
-                                <div class="swiper-wrapper">
-                                    @foreach ($partners as $partner)
-                                        <div class="swiper-slide">
-                                            <a class="brand-item" href="{{ $partner->url }}">
-                                                <img src="{{ $partner->image }}" alt="{{ $partner->alt }}">
-                                            </a>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Brand Area End Here -->
-    @endif
 @endsection
