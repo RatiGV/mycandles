@@ -80,11 +80,13 @@ class Product extends Model
             'slug',
             'new_product',
             'available',
+            'top_product',
         ]);
 
         $item->status = $request->status === 'on' ? 1 : 0;
         $item->available = $request->available === 'on' ? 1 : 0;
         $item->new_product = $request->new_product === 'on' ? 1 : 0;
+        $item->top_product = $request->top_product === 'on' ? 1 : 0;
 
         $item->category_id = $request->category_id ? json_encode($request->category_id) : '[]';
         
@@ -194,10 +196,12 @@ class Product extends Model
             'slug',
             'new_product',
             'available',
+            'top_product',
         ]);
         $item->status = $request->status === 'on' ? 1 : 0;
         $item->new_product = $request->new_product === 'on' ? 1 : 0;
         $item->available = $request->available === 'on' ? 1 : 0;
+        $item->top_product = $request->top_product === 'on' ? 1 : 0;
         $item->category_id = $request->category_id ? json_encode($request->category_id) : '[]';
 
         if ($request->slug) {
