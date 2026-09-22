@@ -64,6 +64,7 @@ class ProductController extends BaseController
             'new_product',
             'available',
             'top_product',
+            'permalink',
             'created_at',
             'updated_at',
         ];
@@ -86,7 +87,6 @@ class ProductController extends BaseController
                 'alt',
                 'meta_title',
                 'meta_description',
-                'permalink',
                 'created_at',
                 'updated_at',
             ];
