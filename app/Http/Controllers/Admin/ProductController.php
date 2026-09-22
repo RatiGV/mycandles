@@ -140,6 +140,10 @@ class ProductController extends BaseController
             $query->whereIn('id', $product_ids_by_title);
         }
 
+        if ($request->field_id) {
+            $query->whereHasCategories([$request->field_id]);
+        }
+
         if ($request->from) {
             $query->where('price', '>=', $request->from);
         }

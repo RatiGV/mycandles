@@ -41,7 +41,9 @@
                 <select name="field_id" class="chosen-select-deselect form-control">
                     <option value=""></option>
                     @forelse($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                        <option value="{{ $category->id }}" {{ Request::get('field_id') == $category->id ? 'selected' : '' }}>
+                            {{ $category->title }}
+                        </option>
                     @empty
                     @endforelse
                 </select>
