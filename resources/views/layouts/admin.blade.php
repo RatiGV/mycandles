@@ -168,12 +168,6 @@
                                             <span class="menu-text">@lang('admin.routes.Logs')</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('EditConfigurations') }}" title="@lang('admin.routes.Configurations')">
-                                            <i class="khvich-i fas fa-cogs"></i>
-                                            <span class="menu-text">@lang('admin.routes.Configurations')</span>
-                                        </a>
-                                    </li>
                                 @endif
                             </ul>
                         </div>
@@ -205,13 +199,6 @@
                                             <i class="khvich-i fas fa-desktop pull-right"></i> @lang('admin.go_to_site')
                                         </a>
                                     </li>
-                                    @if (Session::get('admin')->role === 1)
-                                        <li>
-                                            <a href="{{ route('EditConfigurations') }}">
-                                                <i class="khvich-i fas fa-cogs pull-right"></i> @lang('admin.routes.Configurations')
-                                            </a>
-                                        </li>
-                                    @endif
                                     <li>
                                         <a id="LogoutAdmin">
                                             <i class="khvich-i fas fa-sign-out-alt pull-right"></i> @lang('admin.logout')

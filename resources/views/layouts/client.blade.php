@@ -138,26 +138,16 @@
                                                 <span class="wishlist-quantity">{{ count((new \App\Services\WishlistService())->ids()) }}</span>
                                             </a>
                                         </li>
-                                        <li class="dropdown d-none d-lg-block header-lang-switch">
-                                            <button class="btn btn-link dropdown-toggle ht-btn" type="button"
-                                                id="languageButton" data-bs-toggle="dropdown" aria-expanded="false">
-
-                                                {{ LaravelLocalization::getCurrentLocaleNative() }}
-                                            </button>
-
-                                            <ul class="dropdown-menu" aria-labelledby="languageButton">
-                                                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                                    @if (locale() !== $localeCode)
-                                                        <li>
-                                                            <a class="dropdown-item" rel="alternate"
-                                                                hreflang="{{ $localeCode }}"
-                                                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                                                {{ $properties['native'] }}
-                                                            </a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
+                                        <li class="d-none d-lg-block header-lang-switch">
+                                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                @if (locale() !== $localeCode)
+                                                    <a class="ht-btn" rel="alternate"
+                                                        hreflang="{{ $localeCode }}"
+                                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                        {{ $localeCode === 'en' ? 'ENG' : $properties['native'] }}
+                                                    </a>
+                                                @endif
+                                            @endforeach
                                         </li>
                                         <li class="mobile-menu_wrap d-block d-lg-none">
                                             <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">
@@ -219,7 +209,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-3 col-6">
 
-                                <a href="{{ route('clientHome') }}" class="header-logo">
+                                <a href="{{ route('clientHome') }}" class="header-logo header-logo-round header-logo-round-sm">
                                     <img src="{{ $info->logo }}" alt="Header Logo">
                                 </a>
 
@@ -271,26 +261,16 @@
                                                 <span class="wishlist-quantity">{{ count((new \App\Services\WishlistService())->ids()) }}</span>
                                             </a>
                                         </li>
-                                        <li class="dropdown d-none d-lg-block header-lang-switch">
-                                            <button class="btn btn-link dropdown-toggle ht-btn" type="button"
-                                                id="languageButtonSticky" data-bs-toggle="dropdown" aria-expanded="false">
-
-                                                {{ LaravelLocalization::getCurrentLocaleNative() }}
-                                            </button>
-
-                                            <ul class="dropdown-menu" aria-labelledby="languageButtonSticky">
-                                                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                                    @if (locale() !== $localeCode)
-                                                        <li>
-                                                            <a class="dropdown-item" rel="alternate"
-                                                                hreflang="{{ $localeCode }}"
-                                                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                                                {{ $properties['native'] }}
-                                                            </a>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
+                                        <li class="d-none d-lg-block header-lang-switch">
+                                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                @if (locale() !== $localeCode)
+                                                    <a class="ht-btn" rel="alternate"
+                                                        hreflang="{{ $localeCode }}"
+                                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                        {{ $localeCode === 'en' ? 'ENG' : $properties['native'] }}
+                                                    </a>
+                                                @endif
+                                            @endforeach
                                         </li>
                                         <li class="mobile-menu_wrap d-block d-lg-none">
                                             <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">
@@ -322,29 +302,16 @@
                                         <span class="wishlist-quantity">{{ count((new \App\Services\WishlistService())->ids()) }}</span>
                                     </a>
                                 </li>
-                                <li class="dropdown header-lang-switch">
-                                    <button class="btn btn-link dropdown-toggle ht-btn" type="button"
-                                        id="languageButtonMobile" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-
-                                        {{ LaravelLocalization::getCurrentLocaleNative() }}
-                                    </button>
-
-                                    <ul class="dropdown-menu" aria-labelledby="languageButtonMobile">
-
-                                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                            @if (locale() !== $localeCode)
-                                                <li>
-                                                    <a class="dropdown-item" rel="alternate"
-                                                        hreflang="{{ $localeCode }}"
-                                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                                        {{ $properties['native'] }}
-                                                    </a>
-                                                </li>
-                                            @endif
-                                        @endforeach
-
-                                    </ul>
+                                <li class="header-lang-switch">
+                                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                        @if (locale() !== $localeCode)
+                                            <a class="ht-btn" rel="alternate"
+                                                hreflang="{{ $localeCode }}"
+                                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                {{ $localeCode === 'en' ? 'ENG' : $properties['native'] }}
+                                            </a>
+                                        @endif
+                                    @endforeach
                                 </li>
                             </ul>
                         </div>

@@ -1,6 +1,7 @@
      @extends('layouts.client')
      @section('content')
          <main class="main-content">
+             <div class="breadcrumb-area breadcrumb-height" data-bg-image="{{ $info->top_banner }}"></div>
              <div class="shop-area section-space-y-axis-100">
                  <div class="container">
                      <div class="row">

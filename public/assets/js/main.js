@@ -453,41 +453,24 @@
             let slideCount =
                 sliderMain.querySelectorAll(".swiper-slide").length;
 
-            let mainSwiper = new Swiper(sliderMain, {
-                loop: slideCount > 2,
-            });
-
             let navSwiper = new Swiper(sliderNav, {
                 slidesPerView: Math.min(3, slideCount),
                 loop: slideCount > 2,
                 loopedSlides: slideCount,
                 spaceBetween: 20,
+                watchSlidesProgress: true,
                 navigation: {
                     nextEl: sliderNav.querySelector(".thumbs-button-next"),
                     prevEl: sliderNav.querySelector(".thumbs-button-prev"),
                 },
             });
 
-            if (slideCount > 2) {
-                mainSwiper.controller.control = navSwiper;
-                navSwiper.controller.control = mainSwiper;
-            }
-
-            if (slideCount <= 2) {
-                sliderNav
-                    .querySelector(".thumbs-button-next")
-                    .addEventListener("click", function () {
-                        navSwiper.slideNext();
-                        mainSwiper.slideNext();
-                    });
-
-                sliderNav
-                    .querySelector(".thumbs-button-prev")
-                    .addEventListener("click", function () {
-                        navSwiper.slidePrev();
-                        mainSwiper.slidePrev();
-                    });
-            }
+            let mainSwiper = new Swiper(sliderMain, {
+                loop: slideCount > 2,
+                thumbs: {
+                    swiper: navSwiper,
+                },
+            });
         };
 
         multipleSwiperSlides();

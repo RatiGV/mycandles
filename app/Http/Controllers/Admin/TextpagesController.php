@@ -57,6 +57,8 @@ class TextpagesController extends BaseController
             'status',
             'created_at',
             'updated_at',
+            'slug',
+            'permalink',
         ];
 
         /* ძირითადი ცხრილის ის ველები, რომელთა შესაბამისი html
@@ -76,6 +78,8 @@ class TextpagesController extends BaseController
                 'lang',
                 'created_at',
                 'updated_at',
+                'meta_title',
+                'meta_description',
             ];
 
             return array_diff($translates_table_columns, $translates_no_generate_columns);
@@ -112,6 +116,8 @@ class TextpagesController extends BaseController
             'translates.'.$this->configuration->admin_lang.'.description' => 'required',
             'image' => 'mimes:jpeg,jpg,png',
         ]);
+
+        $this->fillMetaFromContent($request);
 
         $insert = $this->model->addItem($request);
 
@@ -163,6 +169,8 @@ class TextpagesController extends BaseController
             'image' => 'mimes:jpeg,jpg,png',
         ]);
 
+        $this->fillMetaFromContent($request);
+
         $update = $this->model->updateItem($request, $item);
 
         $request->session()->flash('last_edited_lang', $request->last_edited_lang);
@@ -180,5 +188,17 @@ class TextpagesController extends BaseController
         } else {
             return redirect()->route($this->routes_suffix);
         }
+    }
+
+    private function fillMetaFromContent(Request $request)
+    {
+        $translates = $request->input('translates', []);
+
+        foreach ($translates as $lang => $data) {
+            $translates[$lang]['meta_title'] = $data['title'] ?? '';
+            $translates[$lang]['meta_description'] = $data['description'] ?? '';
+        }
+
+        $request->merge(['translates' => $translates]);
     }
 }

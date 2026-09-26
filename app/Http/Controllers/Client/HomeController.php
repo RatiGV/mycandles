@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
         $this->data['sliders'] = Slider::allItems(locale(),true);
 
-        $this->data['products'] = Product::with('trans')->whereNotNull('id')->where('status',1)->where('top_product',1)->take(8)->get();
+        $this->data['products'] = Product::with('trans')->whereNotNull('id')->where('status',1)->where('top_product',1)->take(16)->get();
 
         $this->data['blogs'] = News::with('trans')->where('status',1)->take(4)->orderBy('created_at','desc')->get();
 

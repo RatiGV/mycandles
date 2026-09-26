@@ -78,7 +78,7 @@ class SlidersController extends BaseController
         }
     }
 
-    protected $required_columns = ['image', 'title'];
+    protected $required_columns = ['image'];
 
     public function index()
     {
@@ -104,7 +104,6 @@ class SlidersController extends BaseController
     public function store(Request $request)
     {
         $this->validate($request, [
-            'translates.'.$this->configuration->admin_lang.'.title' => 'required',
             'image' => 'required|mimes:jpeg,jpg,png',
         ]);
 
@@ -150,7 +149,6 @@ class SlidersController extends BaseController
         }
 
         $this->validate($request, [
-            'translates.'.$this->configuration->admin_lang.'.title' => 'required',
             'image' => 'mimes:jpeg,jpg,png',
         ]);
 

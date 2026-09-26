@@ -53,6 +53,7 @@
                            id="lat-edited-lang-inp"
                     >
                     <div id="myTabContent" class="tab-content">
+                        @unless(in_array($item->id, [1, 2]))
                         <div class="form-group {{ $errors->has('image') ? 'bad' : '' }}">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">@lang('admin.image')</label>
                             <div class="col-md-7 col-sm-7 col-xs-12">
@@ -78,6 +79,7 @@
                                 </div>
                             @endif
                         </div>
+                        @endunless
                         @forelse($Localization as $key => $lang)
                             @php
                                 $item_info = $model::getItemInfo($item->id , $lang['prefix']);

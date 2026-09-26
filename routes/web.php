@@ -32,7 +32,6 @@ use App\Http\Controllers\Admin\TextpagesController;
 use App\Http\Controllers\Admin\AdminIndexController;
 use App\Http\Controllers\Admin\ChangelogsController;
 use App\Http\Controllers\Admin\InformationController;
-use App\Http\Controllers\Admin\ConfigurationsController;
 use App\Http\Controllers\Admin\PaymentGateAwayController;
 use App\Http\Controllers\Admin\NewsCategoriesController;
 use App\Http\Controllers\Admin\ProductCategoriesController;
@@ -371,14 +370,6 @@ Route::middleware(['admin', 'check_permission'])->group(function () {
                 });
             });
 
-            // საიტის კონფიგურაციული პარამეტრები
-            Route::prefix('configuration')->group(function () {
-                Route::controller(ConfigurationsController::class)->group(function () {
-                    Route::get('/', 'edit')->name('EditConfigurations');
-                    Route::post('/update/{id}', 'update')->name('UpdateConfigurations');
-                    Route::get('/remove_cache_key/{key}', 'remove_cache_key')->name('RemoveCacheKeyConfigurations');
-                });
-            });
         });
     });
 });

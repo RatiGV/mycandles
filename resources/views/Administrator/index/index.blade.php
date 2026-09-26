@@ -147,15 +147,6 @@
                 </div>
             </a>
         </div>
-        <div class="col-md-3">
-            <a href="{{ route('EditConfigurations') }}">
-                <div class="card-counter danger">
-                    <i class="fas fa-cogs"></i>
-                    <span class="count-numbers"></span>
-                    <span class="count-name">@lang('admin.routes.Configurations')</span>
-                </div>
-            </a>
-        </div>
     </div>
 </div>
 @if (false)

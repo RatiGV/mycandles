@@ -5,7 +5,7 @@
 
         <!-- Main Slider -->
         @if ($sliders->isNotEmpty())
-            <div class="swiper-container main-slider swiper-arrow with-bg_white">
+            <div class="swiper-container main-slider swiper-arrow">
                 <div class="swiper-wrapper">
                     @foreach ($sliders as $slider)
                         <div class="swiper-slide">
@@ -15,7 +15,9 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="slide-content text-black">
-                                                <h2 class="title">{{ $slider->title }}</h2>
+                                                @if ($slider->title)
+                                                    <h2 class="title">{{ $slider->title }}</h2>
+                                                @endif
                                                 <p class="short-desc">{{ $slider->short_description }}</p>
                                                 @if ($slider->url)
                                                     <div class="btn-wrap">
