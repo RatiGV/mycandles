@@ -3062,6 +3062,12 @@ blockquote p {
 /*----------------------------------------*/
 /*  07. Shipping
 /*----------------------------------------*/
+.shipping-wrap {
+  margin-bottom: -30px;
+}
+.shipping-wrap > [class*="col-"] {
+  margin-bottom: 30px;
+}
 .shipping-item {
   border: 1px dashed #ffe16c;
   border-radius: 5px;
