@@ -413,6 +413,11 @@ img {
   padding-bottom: 30px;
 }
 
+.header-middle.py-30 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .px-30 {
   padding-left: 30px;
   padding-right: 30px;
