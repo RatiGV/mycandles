@@ -71,14 +71,14 @@
     <!-- CSS
     ============================================ -->
 
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}?v=2" />
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}?v=3" />
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}?v=2">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}?v=3">
 
     <!-- Non-critical CSS (icon fonts, sliders, popups, toast, custom font) loaded async -->
-    <link rel="preload" href="{{ asset('assets/css/vendor-bundle.css') }}?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ asset('assets/css/vendor-bundle.css') }}?v=2"></noscript>
+    <link rel="preload" href="{{ asset('assets/css/vendor-bundle.css') }}?v=3" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('assets/css/vendor-bundle.css') }}?v=3"></noscript>
     @stack('css')
 
     <script>
