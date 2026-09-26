@@ -1,24 +1,7 @@
      @extends('layouts.client')
      @section('content')
          <main class="main-content">
-             <div class="breadcrumb-area breadcrumb-height"
-                 data-bg-image="{{ $info->top_banner }}">
-                 <div class="container h-100">
-                     <div class="row h-100">
-                         <div class="col-lg-12">
-                             <div class="breadcrumb-item">
-                                 <h2 class="breadcrumb-heading">FAQ</h2>
-                                 <ul>
-                                     <li>
-                                         <a href="{{ route('clientHome') }}">Home</a>
-                                     </li>
-                                     <li>FAQ</li>
-                                 </ul>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
+             <div class="breadcrumb-area breadcrumb-height" data-bg-image="{{ $info->top_banner }}"></div>
              <div class="faq-area section-space-y-axis-100">
                  <div class="container">
                      <div class="row">
