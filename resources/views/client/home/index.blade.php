@@ -8,11 +8,12 @@
             <div class="swiper-container main-slider swiper-arrow with-bg_white">
                 <div class="swiper-wrapper">
                     @foreach ($sliders as $slider)
-                        <div class="swiper-slide animation-style-01">
-                            <div class="slide-inner style-1 bg-height" data-bg-image="assets/images/slider/bg/1-1.jpg">
+                        <div class="swiper-slide">
+                            <div class="slide-inner style-full">
+                                <img class="slide-full-img" src="{{ $slider->image }}" alt="Inner Image">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-lg-6 order-2 order-lg-1 align-self-center">
+                                        <div class="col-lg-6">
                                             <div class="slide-content text-black">
                                                 <h2 class="title">{{ $slider->title }}</h2>
                                                 <p class="short-desc">{{ $slider->short_description }}</p>
@@ -22,15 +23,6 @@
                                                             href="{{ $slider->url }}">{{ $slider->button_title ?: trans('Discover') }}</a>
                                                     </div>
                                                 @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-0 order-1 order-lg-2">
-                                            <div class="inner-img">
-                                                <div class="scene fill">
-                                                    <div class="expand-width" data-depth="0.2">
-                                                        <img src="{{ $slider->image }}" alt="Inner Image">
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -131,6 +123,9 @@
                                                     @if ($product->price > 0)
                                                         <div class="price-box pb-1">
                                                             <span class="new-price">{{ getPrice($product->price) }} GEL</span>
+                                                            @if ($product->old_price > 0)
+                                                                <span class="old-price">{{ getPrice($product->old_price) }} GEL</span>
+                                                            @endif
                                                         </div>
                                                     @endif
                                                 </div>

@@ -115,54 +115,12 @@
     <div class="main-wrapper">
         <!-- Begin Main Header Area -->
         <header class="main-header-area">
-            <div class="header-top bg-pronia-primary d-none d-lg-block">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                        </div>
-                        <div class="col-6">
-                            <div class="header-top-right">
-                                <ul class="dropdown-wrap">
-                                    <li class="dropdown">
-                                        <button class="btn btn-link dropdown-toggle ht-btn" type="button"
-                                            id="languageButton" data-bs-toggle="dropdown" aria-expanded="false">
-
-                                            {{ LaravelLocalization::getCurrentLocaleNative() }}
-                                        </button>
-
-                                        <ul class="dropdown-menu" aria-labelledby="languageButton">
-                                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                                @if (locale() !== $localeCode)
-                                                    <li>
-                                                        <a class="dropdown-item" rel="alternate"
-                                                            hreflang="{{ $localeCode }}"
-                                                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                                            {{ $properties['native'] }}
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                            @endforeach
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
             <div class="header-middle py-30">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-12">
                             <div class="header-middle-wrap position-relative">
-                                @if ($info->phone)
-                                    <div class="header-contact d-none d-lg-flex">
-                                        <i class="pe-7s-call"></i>
-                                        <a href="tel:{{ $info->phone }}">{{ $info->phone }}</a>
-                                    </div>
-                                @endif
-                                <a href="{{ route('clientHome') }}" class="header-logo">
+                                <a href="{{ route('clientHome') }}" class="header-logo header-logo-round">
                                     <img src="{{ $info->logo }}" alt="Header Logo">
                                 </a>
 
@@ -174,50 +132,45 @@
                                                 <i class="pe-7s-search"></i>
                                             </a>
                                         </li>
-                                        {{-- <li class="dropdown d-none d-lg-block">
-                                            <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button"
-                                                id="settingButton" data-bs-toggle="dropdown" aria-label="setting"
-                                                aria-expanded="false">
-                                                <i class="pe-7s-users"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="settingButton">
-                                                @auth
-                                                    <li><a class="dropdown-item" href="{{ route('myAccount') }}">{{ trans('My Account') }}</a></li>
-                                                    <li><a class="dropdown-item"
-                                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ trans('Logout') }}</a>
-                                                    </li>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                        style="display: none;">
-                                                        @csrf
-                                                    </form>
-                                                @endauth
-                                                @guest
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('signin') }}">{{ trans('Login') }}</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ route('signup') }}">{{ trans('Register') }}</a></li>
-                                                @endguest
-                                            </ul>
-                                        </li> --}}
                                         <li class="d-none d-lg-block">
                                             <a href="{{ route('clientWishlist') }}" class="wishlist-nav-link">
                                                 <i class="pe-7s-like"></i>
                                                 <span class="wishlist-quantity">{{ count((new \App\Services\WishlistService())->ids()) }}</span>
                                             </a>
                                         </li>
-                                        {{-- <li class="minicart-wrap me-3 me-lg-0">
-                                            <a href="#miniCart" class="minicart-btn toolbar-btn">
-                                                <i class="pe-7s-shopbag"></i>
-                                                <span class="quantity cart-quantity">{{ \Cart::getContent()->count() }}</span>
-                                            </a>
-                                        </li> --}}
+                                        <li class="dropdown d-none d-lg-block header-lang-switch">
+                                            <button class="btn btn-link dropdown-toggle ht-btn" type="button"
+                                                id="languageButton" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                                {{ LaravelLocalization::getCurrentLocaleNative() }}
+                                            </button>
+
+                                            <ul class="dropdown-menu" aria-labelledby="languageButton">
+                                                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                    @if (locale() !== $localeCode)
+                                                        <li>
+                                                            <a class="dropdown-item" rel="alternate"
+                                                                hreflang="{{ $localeCode }}"
+                                                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                                {{ $properties['native'] }}
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        </li>
                                         <li class="mobile-menu_wrap d-block d-lg-none">
                                             <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">
                                                 <i class="pe-7s-menu"></i>
                                             </a>
                                         </li>
                                     </ul>
+                                    @if ($info->phone)
+                                        <div class="header-contact header-contact-below d-none d-lg-flex">
+                                            <i class="pe-7s-call"></i>
+                                            <a href="tel:{{ $info->phone }}">{{ $info->phone }}</a>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -312,35 +265,33 @@
                                                 <i class="pe-7s-search"></i>
                                             </a>
                                         </li>
-                                        {{-- <li class="dropdown d-none d-lg-block">
-                                            <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button"
-                                                id="stickysettingButton" data-bs-toggle="dropdown"
-                                                aria-label="setting" aria-expanded="false">
-                                                <i class="pe-7s-users"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="stickysettingButton">
-                                                @auth
-                                                    <li><a class="dropdown-item" href="{{ route('myAccount') }}">{{ trans('My Account') }}</a></li>
-                                                @endauth
-
-                                                @guest
-                                                    <li><a class="dropdown-item" href="{{ route('signin') }}">{{ trans('Login') }}</a></li>
-                                                    <li><a class="dropdown-item" href="{{ route('signup') }}">{{ trans('Register') }}</a></li>
-                                                @endguest
-                                            </ul>
-                                        </li> --}}
                                         <li class="d-none d-lg-block">
                                             <a href="{{ route('clientWishlist') }}" class="wishlist-nav-link">
                                                 <i class="pe-7s-like"></i>
                                                 <span class="wishlist-quantity">{{ count((new \App\Services\WishlistService())->ids()) }}</span>
                                             </a>
                                         </li>
-                                        {{-- <li class="minicart-wrap me-3 me-lg-0">
-                                            <a href="#miniCart" class="minicart-btn toolbar-btn">
-                                                <i class="pe-7s-shopbag"></i>
-                                                <span class="quantity cart-quantity">{{ \Cart::getContent()->count() }}</span>
-                                            </a>
-                                        </li> --}}
+                                        <li class="dropdown d-none d-lg-block header-lang-switch">
+                                            <button class="btn btn-link dropdown-toggle ht-btn" type="button"
+                                                id="languageButtonSticky" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                                {{ LaravelLocalization::getCurrentLocaleNative() }}
+                                            </button>
+
+                                            <ul class="dropdown-menu" aria-labelledby="languageButtonSticky">
+                                                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                    @if (locale() !== $localeCode)
+                                                        <li>
+                                                            <a class="dropdown-item" rel="alternate"
+                                                                hreflang="{{ $localeCode }}"
+                                                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                                {{ $properties['native'] }}
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        </li>
                                         <li class="mobile-menu_wrap d-block d-lg-none">
                                             <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">
                                                 <i class="pe-7s-menu"></i>
@@ -365,57 +316,35 @@
                         </div>
                         <div class="offcanvas-user-info">
                             <ul class="dropdown-wrap">
-                                <div class="col-6">
-                                    <div class="header-top-right">
-                                        <ul class="dropdown-wrap">
-                                            <li class="dropdown">
-                                                <button class="btn btn-link dropdown-toggle ht-btn" type="button"
-                                                    id="languageButton" data-bs-toggle="dropdown"
-                                                    aria-expanded="false">
-
-                                                    {{ LaravelLocalization::getCurrentLocaleNative() }}
-                                                </button>
-
-                                                <ul class="dropdown-menu" aria-labelledby="languageButton">
-
-                                                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                                        @if (locale() !== $localeCode)
-                                                            <li>
-                                                                <a class="dropdown-item" rel="alternate"
-                                                                    hreflang="{{ $localeCode }}"
-                                                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                                                    {{ $properties['native'] }}
-                                                                </a>
-                                                            </li>
-                                                        @endif
-                                                    @endforeach
-
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                {{-- <li class="dropdown">
-                                    <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button"
-                                        id="settingButtonTwo" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="pe-7s-users"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButtonTwo">
-                                        @auth
-                                            <li><a class="dropdown-item" href="{{ route('myAccount') }}">{{ trans('My Account') }}</a></li>
-                                        @endauth
-                                        @guest
-                                            <li><a class="dropdown-item" href="{{ route('signin') }}">{{ trans('Login') }}</a></li>
-                                            <li><a class="dropdown-item" href="{{ route('signup') }}">{{ trans('Register') }}</a></li>
-                                        @endguest
-                                    </ul>
-                                </li> --}}
                                 <li>
                                     <a href="{{ route('clientWishlist') }}" class="wishlist-nav-link">
                                         <i class="pe-7s-like"></i>
                                         <span class="wishlist-quantity">{{ count((new \App\Services\WishlistService())->ids()) }}</span>
                                     </a>
+                                </li>
+                                <li class="dropdown header-lang-switch">
+                                    <button class="btn btn-link dropdown-toggle ht-btn" type="button"
+                                        id="languageButtonMobile" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+
+                                        {{ LaravelLocalization::getCurrentLocaleNative() }}
+                                    </button>
+
+                                    <ul class="dropdown-menu" aria-labelledby="languageButtonMobile">
+
+                                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            @if (locale() !== $localeCode)
+                                                <li>
+                                                    <a class="dropdown-item" rel="alternate"
+                                                        hreflang="{{ $localeCode }}"
+                                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                        {{ $properties['native'] }}
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+
+                                    </ul>
                                 </li>
                             </ul>
                         </div>

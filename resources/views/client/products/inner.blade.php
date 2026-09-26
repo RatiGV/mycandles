@@ -48,23 +48,6 @@
 
 @section('content')
     <main class="main-content">
-        <div class="breadcrumb-area breadcrumb-height" data-bg-image="{{ $info->top_banner }}">
-            <div class="container h-100">
-                <div class="row h-100">
-                    <div class="col-lg-12">
-                        <div class="breadcrumb-item">
-                            <h2 class="breadcrumb-heading">{{ trans('Shop') }}</h2>
-                            <ul>
-                                <li>
-                                    <a href="{{ route('clientHome') }}">{{ trans('Home') }}</a>
-                                </li>
-                                <li>{{ trans('Shop') }}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="single-product-area section-space-y-axis-100">
             <div class="container">
                 <div class="row">
@@ -123,6 +106,9 @@
                             @if ($product->price > 0)
                                 <div class="price-box">
                                     <span class="new-price">GEL {{ getPrice($product->price) }}</span>
+                                    @if ($product->old_price > 0)
+                                        <span class="old-price">GEL {{ getPrice($product->old_price) }}</span>
+                                    @endif
                                 </div>
                             @endif
                             <p class="short-desc">{{ $product->trans->short_description }}</p>
@@ -265,6 +251,9 @@
                                             @if ($related->price > 0)
                                                 <div class="price-box pb-1">
                                                     <span class="new-price">{{ getPrice($related->price) }} GEL</span>
+                                                    @if ($related->old_price > 0)
+                                                        <span class="old-price">{{ getPrice($related->old_price) }} GEL</span>
+                                                    @endif
                                                 </div>
                                             @endif
                                         </div>

@@ -1,28 +1,36 @@
      @extends('layouts.client')
      @section('content')
          <main class="main-content">
-             <div class="breadcrumb-area breadcrumb-height" data-bg-image="{{ $info->top_banner }}">
-                 <div class="container h-100">
-                     <div class="row h-100">
-                         <div class="col-lg-12">
-                             <div class="breadcrumb-item">
-                                 <h2 class="breadcrumb-heading">{{ trans('Shop') }}</h2>
-                                 <ul>
-                                     <li>
-                                         <a href="{{ route('clientHome') }}">{{ trans('Home') }}</a>
-                                     </li>
-                                     <li>{{ trans('Shop') }}</li>
-                                 </ul>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
              <div class="shop-area section-space-y-axis-100">
                  <div class="container">
                      <div class="row">
                          <div class="col-xl-3 col-lg-4 order-2 order-lg-1 pt-5 pt-lg-0">
                              <div class="sidebar-area">
+                                 <div class="widgets-area">
+                                     <div class="widgets-item pt-0">
+                                         <h2 class="widgets-title mb-4">{{ trans('Categories') }}</h2>
+                                         <ul class="widgets-category">
+                                             <li>
+                                                 <a href="{{ route('clientProducts') }}" class="{{ request('category') ? '' : 'active' }}">
+                                                     <i class="fa fa-chevron-right"></i>
+                                                     {{ trans('All') }} <span>({{ \App\Models\Product::count() }})</span>
+                                                 </a>
+                                             </li>
+                                             @forelse($categories as $countCategories)
+                                                 <li>
+                                                     <a
+                                                         href="{{ route('clientProducts') }}?category={{ $countCategories->trans->title }}&search={{ request()->get('search') }}&sort={{ request()->get('sort') }}&priceRange={{ request()->get('priceRange') }}"
+                                                         class="{{ request('category') === $countCategories->trans->title ? 'active' : '' }}">
+                                                         <i class="fa fa-chevron-right"></i>
+                                                         {{ $countCategories->trans->title }}
+                                                         <span>({{ $countCategories->products_count }})</span>
+                                                     </a>
+                                                 </li>
+                                             @empty
+                                             @endforelse
+                                         </ul>
+                                     </div>
+                                 </div>
                                  <div class="widgets-searchbox">
                                      <form id="widgets-searchbox" action="{{ route('clientProducts') }}">
                                          <input class="input-field" type="text" name="search"
@@ -58,31 +66,6 @@
                                              </button>
                                          </div>
                                      </form>
-                                 </div>
-                                 <div class="widgets-area">
-                                     <div class="widgets-item pt-0">
-                                         <h2 class="widgets-title mb-4">{{ trans('Categories') }}</h2>
-                                         <ul class="widgets-category">
-                                             <li>
-                                                 <a href="{{ route('clientProducts') }}" class="{{ request('category') ? '' : 'active' }}">
-                                                     <i class="fa fa-chevron-right"></i>
-                                                     {{ trans('All') }} <span>({{ \App\Models\Product::count() }})</span>
-                                                 </a>
-                                             </li>
-                                             @forelse($categories as $countCategories)
-                                                 <li>
-                                                     <a
-                                                         href="{{ route('clientProducts') }}?category={{ $countCategories->trans->title }}&search={{ request()->get('search') }}&sort={{ request()->get('sort') }}&priceRange={{ request()->get('priceRange') }}"
-                                                         class="{{ request('category') === $countCategories->trans->title ? 'active' : '' }}">
-                                                         <i class="fa fa-chevron-right"></i>
-                                                         {{ $countCategories->trans->title }}
-                                                         <span>({{ $countCategories->products_count }})</span>
-                                                     </a>
-                                                 </li>
-                                             @empty
-                                             @endforelse
-                                         </ul>
-                                     </div>
                                  </div>
                              </div>
                          </div>
@@ -178,6 +161,9 @@
                                                              <div class="price-box pb-1">
                                                                  <span class="new-price">
                                                                      {{ getPrice($product->price) }} GEL</span>
+                                                                 @if ($product->old_price > 0)
+                                                                     <span class="old-price">{{ getPrice($product->old_price) }} GEL</span>
+                                                                 @endif
                                                              </div>
                                                          @endif
                                                      </div>
@@ -207,7 +193,9 @@
                                                              <div class="price-box pb-1">
                                                                  <span class="new-price">{{ getPrice($product->price) }}
                                                                      GEL</span>
-
+                                                                 @if ($product->old_price > 0)
+                                                                     <span class="old-price">{{ getPrice($product->old_price) }} GEL</span>
+                                                                 @endif
                                                              </div>
                                                          @endif
                                                          <p class="short-desc mb-0">
