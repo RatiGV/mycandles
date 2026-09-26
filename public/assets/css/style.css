@@ -3065,7 +3065,7 @@ blockquote p {
 .shipping-item {
   border: 1px dashed #ffe16c;
   border-radius: 5px;
-  padding: 25px 30px;
+  padding: 25px 5px 25px 25px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
