@@ -1983,18 +1983,6 @@ blockquote p {
      object-fit: cover;
   z-index: 1;
 }
-.slide-inner.style-full:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0.6)), color-stop(45%, rgba(255, 255, 255, 0.2)), color-stop(70%, rgba(255, 255, 255, 0)));
-  background: -o-linear-gradient(left, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 45%, rgba(255, 255, 255, 0) 70%);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 45%, rgba(255, 255, 255, 0) 70%);
-  z-index: 2;
-}
 .slide-inner.style-full .container {
   position: relative;
   z-index: 3;
