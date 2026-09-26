@@ -220,25 +220,9 @@ class Product extends Model
         $item->code = $request->code !== null && $request->code !== '' ? $request->code : null;
 
         if ($request->hasFile('image')) {
-            /*
-            * როდესაც public_html საქაღალდეში მხოლოდ საჯარო ფაილებია,
-            * საიტის ლოგიკა, კონფიგურაციული ფაილები და ა.შ კი მის გარეთ
-            *
-            */
-            if (! is_null($item->image)) {
-                if (file_exists('../public_html' . $item->image)) {
-                    unlink('../public_html' . $item->image);
-                }
+            if ($item->image && file_exists(public_path($item->image))) {
+                unlink(public_path($item->image));
             }
-
-            /*
-            // როდესაც მთლიანი საიტი public_html საქაღალდეშია
-            if(file_exists(public_path($item->image)))
-            {
-               unlink(public_path($item->image));
-            }
-            *
-            */
 
             $data = [];
             $data['main_table'] = self::$main_table;

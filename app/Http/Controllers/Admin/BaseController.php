@@ -264,19 +264,8 @@ class BaseController extends Controller
             ]);
         }
 
-        if (property_exists($item, $item->$column)) {
-            if (file_exists('../public_html'.$item->$column)) {
-                unlink('../public_html'.$item->$column);
-            }
-
-            /*
-            // როდესაც მთლიანი საიტი public_html საქაღალდეშია
-            if(file_exists(public_path($item->$column)))
-            {
-                unlink(public_path($item->$column));
-            }
-             *
-             */
+        if ($item->$column && file_exists(public_path($item->$column))) {
+            unlink(public_path($item->$column));
         }
 
         return response()->json([
@@ -307,18 +296,9 @@ class BaseController extends Controller
             ]);
         }
 
-        if (file_exists('../public_html'.$item->$column)) {
-            unlink('../public_html'.$item->$column);
-        }
-
-        /*
-        // როდესაც მთლიანი საიტი public_html საქაღალდეშია
-        if(file_exists(public_path($item->$column)))
-        {
+        if ($item->$column && file_exists(public_path($item->$column))) {
             unlink(public_path($item->$column));
         }
-         *
-         */
 
         $delete = DB::table($gallery_table)->where('id', $image_id)->delete();
 
