@@ -22,6 +22,7 @@ class ProductController extends Controller
         $sort = $request->sort;
 
         $this->data['products'] = Product::with('trans')
+            ->whereHas('trans')
             ->when($category, function ($q, $category) {
                 $cat = ProductCategoryTranslate::where('title', 'like', '%' . $category . '%')->where('lang', locale())->pluck('parent_id')->toArray();
                 $q->whereHasCategories($cat);
@@ -49,6 +50,7 @@ class ProductController extends Controller
 
         $this->data['categories'] = ProductCategory::query()
             ->with('trans')
+            ->whereHas('trans')
             ->withProductsCount()
             ->get();
 
