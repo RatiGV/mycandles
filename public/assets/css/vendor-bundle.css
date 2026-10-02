@@ -846,11 +846,11 @@ html[lang="ka"] body {
     background-color: #d9534f;
 }
 .product-add-action ul li a.add-to-wishlist-product.in-wishlist i {
-    background-color: #ffe16c;
+    background-color: #c9a000;
     color: #ffffff;
 }
 .single-product-content .quantity-with-btn li a.custom-circle-btn.add-to-wishlist-product.in-wishlist i {
-    background-color: #ffe16c;
+    background-color: #c9a000;
     color: #ffffff;
 }
 .wishlist-nav-link {
