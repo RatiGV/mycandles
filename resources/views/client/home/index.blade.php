@@ -90,9 +90,9 @@
                                             <div class="product-item">
                                                 <div class="product-img">
                                                     <a
-                                                        href="{{ route('clientProductsInner', $product->slug ?? $product->id . '-' . \Illuminate\Support\Str::slug($product->trans->title, '-', false)) }}">
+                                                        href="{{ route('clientProductsInner', $product->slug ?? $product->id . '-' . \Illuminate\Support\Str::slug($product->trans?->title, '-', false)) }}">
                                                         <img class="primary-img" src="{{ $product->image }}"
-                                                            alt="{{ $product->trans->alt }}" loading="lazy" decoding="async">
+                                                            alt="{{ $product->trans?->alt }}" loading="lazy" decoding="async">
                                                     </a>
                                                     <div class="product-add-action">
                                                         <ul>
@@ -121,7 +121,7 @@
                                                 </div>
                                                 <div class="product-content">
                                                     <a class="product-name"
-                                                        href="{{ route('clientProductsInner', $product->slug ?? $product->id . '-' . \Illuminate\Support\Str::slug($product->trans->title, '-', false)) }}">{{ $product->trans->title }}</a>
+                                                        href="{{ route('clientProductsInner', $product->slug ?? $product->id . '-' . \Illuminate\Support\Str::slug($product->trans?->title, '-', false)) }}">{{ $product->trans?->title }}</a>
                                                     @if ($product->price > 0)
                                                         <div class="price-box pb-1">
                                                             <span class="new-price">{{ getPrice($product->price) }} GEL</span>
