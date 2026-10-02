@@ -79,6 +79,21 @@ class Information extends Model
     {
         $this->attributes['analytics'] = self::extractAnalyticsId($value);
     }
+    /*
+     * whatsapp ველში შეიძლება ჩაიწეროს როგორც სრული ბმული, ისე მხოლოდ ტელეფონის ნომერი.
+     * ნომრის შემთხვევაში აგენერირდება https://wa.me/ბმული.
+     */
+    public function getWhatsappUrlAttribute()
+    {
+        $value = trim((string) ($this->attributes['whatsapp'] ?? ''));
+        if ($value === '') {
+            return null;
+        }
+        if (preg_match('/^[+\d\s()\-]+$/', $value)) {
+            return 'https://wa.me/'.preg_replace('/\D+/', '', $value);
+        }
+        return preg_match('/^https?:\/\//i', $value) ? $value : 'https://'.$value;
+    }
     /**
      * ერთადერთი ჩანაწერის მოძებნა.
      * თანმიმდევრობა: გადმოცემული id, ნაგულისხმევი id, ცხრილის პირველი ჩანაწერი.

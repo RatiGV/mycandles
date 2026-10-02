@@ -141,7 +141,7 @@ return [
     'address' => 'Address',
     'facebook' => 'Facebook',
     'instagram' => 'Instagram',
-    'twitter' => 'Twitter',
+    'whatsapp' => 'WhatsApp',
     'youtube' => 'Youtube',
 
     // სხვადასხვა

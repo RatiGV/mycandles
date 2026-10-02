@@ -30,7 +30,7 @@
                     @endif
                     <div class="clearfix"></div>
                 </div>
-                <div class="x_content">
+                <div class="x_content {{ $can_sort ? 'admin_container' : '' }}" data-instance="{{ $main_table }}">
                     @if (Session::has('success'))
                         <div class="alert alert-success alert-dismissible fade in" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -93,12 +93,12 @@
                         </thead>
                         <tbody>
                             @forelse ($items as $key => $item)
-                                <tr>
+                                <tr @if ($can_sort) style="cursor:move" @endif>
                                     @forelse($listing_columns as $listing_column)
                                         @if ($listing_column === 'sort')
                                             <td class="sort" id="sort{{ $key }}" data-id="{{ $item->id }}"
                                                 data-ordering ="{{ $item->sort }}">
-                                                {{ ++$key }}
+                                                {{ $items->firstItem() + $key }}
                                             </td>
                                         @elseif($listing_column === 'status')
                                             <td>
@@ -211,6 +211,8 @@
 
         $(document).ready(function() {
             $('#menu_toggle').trigger('click');
+            // ორდერინგის გვერდზე მიმდინარე გვერდის წინა ჩანაწერების რაოდენობა
+            $k = {{ $items->count() ? $items->firstItem() - 1 : 0 }};
         });
     </script>
 @endpush

@@ -473,28 +473,7 @@
                                 <p class="footer-widget-desc">{{ $info->translate->slogan }}
                                 </p>
                                 <div class="social-link with-border">
-                                    <ul>
-                                        @if ($info->facebook)
-                                            <li>
-                                                <a href="{{ $info->facebook }}" data-tippy="Facebook"
-                                                    data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                    data-tippy-delay="50" data-tippy-arrow="true"
-                                                    data-tippy-theme="sharpborder">
-                                                    <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if ($info->twitter)
-                                            <li>
-                                                <a href="{{ $info->twitter }}" data-tippy="Twitter"
-                                                    data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                    data-tippy-delay="50" data-tippy-arrow="true"
-                                                    data-tippy-theme="sharpborder">
-                                                    <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                        @endif
-                                    </ul>
+                                    @include('partials.footer-social')
                                 </div>
                             </div>
                         </div>

@@ -44,7 +44,7 @@ class ProductController extends Controller
                     $q->orderBy('price', 'desc');
                 }
             }, function ($q) {
-                $q->orderBy('created_at', 'desc');
+                $q->orderBy('sort', 'asc')->orderBy('id', 'desc');
             })
             ->paginate(22);
 
