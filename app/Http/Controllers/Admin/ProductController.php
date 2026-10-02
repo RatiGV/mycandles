@@ -160,6 +160,11 @@ class ProductController extends BaseController
             $this->data['items'] = $this->model::allItems($this->configuration->admin_lang, $status_on = false, $where_in, $where_in_cat = false, $paginate = true, $get = false);
         }
 
+        /* გაფილტრულ სიაში გადანაცვლება გლობალურ თანმიმდევრობას დაარღვევდა, ამიტომ ის მხოლოდ სრულ სიაზეა ჩართული */
+        $this->data['can_sort'] = ! ($request->filled('title') || $request->filled('field_id') || $request->filled('from') || $request->filled('to')
+            || ($request->has('status') && $request->get('status') != 1)
+            || ($request->has('new_product') && $request->get('new_product') != 1)
+            || ($request->has('available') && $request->get('available') != 1));
         $this->data['listing_columns'] = ['sort', 'status', 'available', 'top_product', 'image', 'title', 'price'];
         $this->data['routes_suffix'] = $this->routes_suffix;
         $this->data['main_table'] = $this->main_table;

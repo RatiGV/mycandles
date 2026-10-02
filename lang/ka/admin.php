@@ -141,7 +141,7 @@ return [
     'address' => 'მისამართი',
     'facebook' => 'ფეისბუქი',
     'instagram' => 'ინსტაგრამი',
-    'twitter' => 'ტვიტერი',
+    'whatsapp' => 'ვოტსაპი',
     'youtube' => 'იუთუბი',
 
     // სხვადასხვა

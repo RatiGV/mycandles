@@ -60,7 +60,7 @@
                 'telephone' => $info->phone,
                 'contactType' => 'customer service',
             ]),
-            'sameAs' => array_values(array_filter([$info->facebook, $info->twitter])),
+            'sameAs' => array_values(array_filter([$info->facebook, $info->instagram, $info->youtube, $info->whatsapp_url])),
         ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
     </script>
     <script type="application/ld+json">
@@ -84,7 +84,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}?v=4" />
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}?v=4">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}?v=5">
 
     <!-- Non-critical CSS (icon fonts, sliders, popups, toast, custom font) loaded async -->
     <link rel="preload" href="{{ asset('assets/css/vendor-bundle.css') }}?v=4" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -413,28 +413,7 @@
                                 <p class="footer-widget-desc">{{ $info->translate->slogan }}
                                 </p>
                                 <div class="social-link with-border">
-                                    <ul>
-                                        @if ($info->facebook)
-                                            <li>
-                                                <a href="{{ $info->facebook }}" data-tippy="Facebook"
-                                                    data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                    data-tippy-delay="50" data-tippy-arrow="true"
-                                                    data-tippy-theme="sharpborder">
-                                                    <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                        @endif
-                                        @if ($info->twitter)
-                                            <li>
-                                                <a href="{{ $info->twitter }}" data-tippy="Twitter"
-                                                    data-tippy-inertia="true" data-tippy-animation="shift-away"
-                                                    data-tippy-delay="50" data-tippy-arrow="true"
-                                                    data-tippy-theme="sharpborder">
-                                                    <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                        @endif
-                                    </ul>
+                                    @include('partials.footer-social')
                                 </div>
                             </div>
                         </div>

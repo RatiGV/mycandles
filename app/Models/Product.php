@@ -341,7 +341,8 @@ class Product extends Model
             ->when($where_in_cat, function ($query, $where_in_cat) {
                 return $query->whereIn(self::$main_table . '.category_id', $where_in_cat);
             })
-            ->orderBy('id', 'DESC')
+            ->orderBy(self::$main_table . '.sort', 'ASC')
+            ->orderBy(self::$main_table . '.id', 'DESC')
             ->when($get, function ($query, $get) {
                 return $query->get();
             })
