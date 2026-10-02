@@ -1889,7 +1889,7 @@ blockquote p {
   }
 }
 .header-logo-round-sm {
-  width: 60px;
+  width: auto;
   height: 60px;
   padding: 6px;
 }

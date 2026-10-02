@@ -84,7 +84,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}?v=4" />
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}?v=6">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}?v=7">
 
     <!-- Non-critical CSS (icon fonts, sliders, popups, toast, custom font) loaded async -->
     <link rel="preload" href="{{ asset('assets/css/vendor-bundle.css') }}?v=5" as="style" onload="this.onload=null;this.rel='stylesheet'">
