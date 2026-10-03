@@ -82,7 +82,7 @@ class ProductCategoriesController extends BaseController
     public function index()
     {
         $this->data['listing_columns'] = ['sort', 'status', 'title']; // <th> ელემენტები
-        $this->data['items'] = $this->model->allItems($this->configuration->admin_lang, true, false);
+        $this->data['items'] = $this->model->allItems($this->configuration->admin_lang, false, false);
         $this->data['routes_suffix'] = $this->routes_suffix;
         $this->data['main_table'] = $this->main_table;
         $this->data['translates_table'] = $this->translates_table;

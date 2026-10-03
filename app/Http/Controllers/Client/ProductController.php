@@ -24,7 +24,8 @@ class ProductController extends Controller
         $this->data['products'] = Product::with('trans')
             ->whereHas('trans')
             ->when($category, function ($q, $category) {
-                $cat = ProductCategoryTranslate::where('title', 'like', '%' . $category . '%')->where('lang', locale())->pluck('parent_id')->toArray();
+                $cat = ProductCategoryTranslate::where('title', 'like', '%' . $category . '%')->where('lang', locale())
+                    ->whereIn('parent_id', ProductCategory::where('status', 1)->pluck('id'))->pluck('parent_id')->toArray();
                 $q->whereHasCategories($cat);
             })
             ->when($search, function ($q, $search) {
@@ -51,6 +52,7 @@ class ProductController extends Controller
         $this->data['categories'] = ProductCategory::query()
             ->with('trans')
             ->whereHas('trans')
+            ->where('status', 1)
             ->withProductsCount()
             ->get();
 
@@ -66,7 +68,7 @@ class ProductController extends Controller
                     ->orWhere('slug', $product);
             })->firstOrFail();
 
-        $this->data['categories'] = ProductCategory::with('trans')->whereIn('id', json_decode($this->data['product']->category_id, true))->get();
+        $this->data['categories'] = ProductCategory::with('trans')->where('status', 1)->whereIn('id', json_decode($this->data['product']->category_id, true))->get();
 
 
         $categoryIds = json_decode($this->data['product']->category_id, true);
