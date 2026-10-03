@@ -169,7 +169,7 @@ class ProductController extends BaseController
         $this->data['routes_suffix'] = $this->routes_suffix;
         $this->data['main_table'] = $this->main_table;
         $this->data['translates_table'] = $this->translates_table;
-        $this->data['categories'] = $this->categories_model::allItems('ka', true, false);
+        $this->data['categories'] = $this->categories_model::allItems('ka', false, false);
 
         return view($this->views_folder . '.index', $this->data);
     }
@@ -180,7 +180,7 @@ class ProductController extends BaseController
         $this->data['main_columns'] = $this->main_columns();
         $this->data['translate_columns'] = $this->translate_columns();
         $this->data['required_columns'] = $this->required_columns;
-        $this->data['categories'] = $this->categories_model::allItems('ka', true, false);
+        $this->data['categories'] = $this->categories_model::allItems('ka', false, false);
 
         return view($this->views_folder . '.add', $this->data);
     }
@@ -227,7 +227,7 @@ class ProductController extends BaseController
         $this->data['model'] = $this->model;
         $this->data['main_table'] = $this->main_table;
         $this->data['image_gallery_table'] = $this->image_gallery_table;
-        $this->data['categories'] = $this->categories_model::allItems('ka', true, false);
+        $this->data['categories'] = $this->categories_model::allItems('ka', false, false);
 
         return view($this->views_folder . '.edit', $this->data);
     }
