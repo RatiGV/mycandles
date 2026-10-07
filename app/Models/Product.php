@@ -303,6 +303,11 @@ class Product extends Model
                 $item = $other_lang ? self::getItemInfoByLang($id, $other_lang, $status_on) : null;
             }
 
+            // პროდუქტს არცერთ ენაზე თარგმანი არ აქვს: ბრუნდება ცარიელი ველებით, რომ რედაქტირება შესაძლებელი იყოს
+            if (! $item && $local && ! $status_on) {
+                $item = self::$current_class::find($id);
+            }
+
             return $item;
         } else {
             return self::$current_class::where(self::$main_table . '.id', $id)->first();
@@ -348,7 +353,7 @@ class Product extends Model
         $main_table = self::$main_table;
         $quoted_local = DB::getPdo()->quote((string) $local);
 
-        return self::$current_class::join(self::$translates_table, function ($join) use ($fallback, $translates_table, $main_table, $quoted_local) {
+        return self::$current_class::query()->{$fallback ? 'leftJoin' : 'join'}(self::$translates_table, function ($join) use ($fallback, $translates_table, $main_table, $quoted_local) {
             if ($fallback) {
                 $join->on(DB::raw("{$translates_table}.id"), '=', DB::raw(
                     "COALESCE((SELECT t1.id FROM {$translates_table} t1 WHERE t1.parent_id = {$main_table}.id AND t1.lang = {$quoted_local} LIMIT 1), "

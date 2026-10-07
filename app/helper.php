@@ -24,11 +24,11 @@ if (!function_exists('shorten')) {
     {
         $string = trim($string);
 
-        if (strlen($string) <= $limit) {
+        if (mb_strlen($string) <= $limit) {
             return $string;
         }
 
-        return substr($string, 0, $limit) . '...';
+        return mb_substr($string, 0, $limit) . '...';
     }
 }
 if (!function_exists('getPrice')) {
