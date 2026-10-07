@@ -241,6 +241,13 @@ class Product extends Model
                 foreach ($translates as $lang => $translation_data) {
                     $item_translate = self::$translates_class::where('parent_id', $item->id)->where('lang', $lang)->first();
 
+                    // ამ ენაზე თარგმანი ჯერ არ არსებობს, ამიტომ იქმნება ახალი
+                    if (! $item_translate) {
+                        $item_translate = new self::$translates_class();
+                        $item_translate->parent_id = $item->id;
+                        $item_translate->lang = $lang;
+                    }
+
                     foreach ($translation_data as $k => $v) {
                         /*  თუ რედაქტირების შაბლონში აღწერილია ისეთი ველი, რომლის 'name'
                          *  ატრიბუტის  შესაბამისი ველიც არ გვხვდება თარგმანების ცხრილში
@@ -268,7 +275,7 @@ class Product extends Model
                         $item_translate->meta_description = shorten(strip_tags($item_translate->description), 160);
                     }
 
-                    $item_translate->update();
+                    $item_translate->save();
                 }
             }
 
@@ -286,6 +293,23 @@ class Product extends Model
     }
 
     public static function getItemInfo($id = 0, $local = '', $status_on = false)
+    {
+        if (property_exists(__CLASS__, 'translates_table')) {
+            $item = self::getItemInfoByLang($id, $local, $status_on);
+
+            // მოთხოვნილ ენაზე თარგმანი არ არსებობს: გამოიყენება პირველი არსებული თარგმანი
+            if (! $item && $local) {
+                $other_lang = self::$translates_class::where('parent_id', $id)->orderBy('id')->value('lang');
+                $item = $other_lang ? self::getItemInfoByLang($id, $other_lang, $status_on) : null;
+            }
+
+            return $item;
+        } else {
+            return self::$current_class::where(self::$main_table . '.id', $id)->first();
+        }
+    }
+
+    private static function getItemInfoByLang($id, $local, $status_on)
     {
         if (property_exists(__CLASS__, 'translates_table')) {
             return self::$current_class::join(self::$translates_table, self::$main_table . '.id', '=', self::$translates_table . '.parent_id')
@@ -314,14 +338,33 @@ class Product extends Model
         }
     }
 
-    public static function allItems($local = '', $status_on = false, $where_in = false, $where_in_cat = false, $paginate = false, $get = false)
+    /*
+     * $fallback = true: ის პროდუქტებიც ბრუნდება, რომლებსაც მოთხოვნილ ენაზე თარგმანი არ აქვთ.
+     * ასეთ შემთხვევაში გამოიყენება პირველი არსებული თარგმანი (ადმინისტრატორის ჩამონათვალისთვის).
+     */
+    public static function allItems($local = '', $status_on = false, $where_in = false, $where_in_cat = false, $paginate = false, $get = false, $fallback = false)
     {
-        return self::$current_class::join(self::$translates_table, self::$main_table . '.id', self::$translates_table . '.parent_id')
+        $translates_table = self::$translates_table;
+        $main_table = self::$main_table;
+        $quoted_local = DB::getPdo()->quote((string) $local);
+
+        return self::$current_class::join(self::$translates_table, function ($join) use ($fallback, $translates_table, $main_table, $quoted_local) {
+            if ($fallback) {
+                $join->on(DB::raw("{$translates_table}.id"), '=', DB::raw(
+                    "COALESCE((SELECT t1.id FROM {$translates_table} t1 WHERE t1.parent_id = {$main_table}.id AND t1.lang = {$quoted_local} LIMIT 1), "
+                    . "(SELECT t2.id FROM {$translates_table} t2 WHERE t2.parent_id = {$main_table}.id ORDER BY t2.id LIMIT 1))"
+                ));
+            } else {
+                $join->on("{$main_table}.id", '=', "{$translates_table}.parent_id");
+            }
+        })
             ->leftjoin('product_category_translates AS pct', function ($join) {
                 $join->on(DB::raw("JSON_UNQUOTE(JSON_EXTRACT(REPLACE(" . self::$main_table . ".category_id, ' ', ''), '$[0]'))"), '=', 'pct.parent_id')
                     ->where('pct.lang', '=', 'ka');
             })
-            ->where(self::$translates_table . '.lang', $local)
+            ->when(! $fallback, function ($query) use ($local) {
+                return $query->where(self::$translates_table . '.lang', $local);
+            })
             ->select(
                 self::$main_table . '.*',
                 self::$translates_table . '.title',

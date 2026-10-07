@@ -135,7 +135,7 @@ class ProductController extends BaseController
         if ($request->title) {
             $product_ids_by_title = DB::table('products_translates')
                 ->where('title', 'like', "%$request->title%")
-                ->where('lang', $this->configuration->admin_lang)->pluck('parent_id')->toArray();
+                ->pluck('parent_id')->unique()->values()->toArray();
 
             $query->whereIn('id', $product_ids_by_title);
         }
@@ -157,7 +157,7 @@ class ProductController extends BaseController
         if (empty($where_in)) {
             $this->data['items'] = collect();
         } else {
-            $this->data['items'] = $this->model::allItems($this->configuration->admin_lang, $status_on = false, $where_in, $where_in_cat = false, $paginate = true, $get = false);
+            $this->data['items'] = $this->model::allItems($this->configuration->admin_lang, $status_on = false, $where_in, $where_in_cat = false, $paginate = true, $get = false, $fallback = true);
         }
 
         /* გაფილტრულ სიაში გადანაცვლება გლობალურ თანმიმდევრობას დაარღვევდა, ამიტომ ის მხოლოდ სრულ სიაზეა ჩართული */
