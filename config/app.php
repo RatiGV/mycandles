@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Facade;
 
 return [
 
-    'locale' => env('APP_LOCALE', 'ka'),
+    'locale' => 'ka',
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'ka'),
+    'fallback_locale' => 'ka',
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'ka_GE'),
 
