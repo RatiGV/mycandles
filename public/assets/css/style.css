@@ -1948,6 +1948,15 @@ blockquote p {
   padding-top: 25px;
   padding-bottom: 20px;
 }
+@media (max-width: 991.98px) {
+  .header-sticky.sticky {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
+  .sticky .header-logo-round-sm {
+    height: 76px;
+  }
+}
 
 /*----------------------------------------*/
 /*  04. Slider
