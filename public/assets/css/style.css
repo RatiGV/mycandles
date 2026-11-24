@@ -1884,7 +1884,6 @@ blockquote p {
 }
 @media (max-width: 479px) {
   .header-logo-round {
-    width: 70px;
     height: 70px;
   }
 }
